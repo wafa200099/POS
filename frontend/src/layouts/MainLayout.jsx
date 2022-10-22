@@ -8,7 +8,10 @@ function MainLayout({children}) {
     <header>
     <nav className="navbar bg-light bg-primary">
     <div className="container">
-       <Link to="/" className="navbar-brand">POS</Link>
+       <Link to="/" className="navbar-brand">HOME</Link>
+       <Link to="/pos" className="navbar-brand">POS</Link>
+       <Link to="/productspage" className="navbar-brand">Products</Link>
+       <Link to="/productcatagories" className="navbar-brand">Product Catagories</Link>
         </div>
     </nav>
     </header>
@@ -16,6 +19,7 @@ function MainLayout({children}) {
     <div className='container mt-3'>
     {children}
     </div>
+    {/* allow send navigation */}
     <ToastContainer
       position="top-center"
       autoClose={5000}
