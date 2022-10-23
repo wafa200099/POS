@@ -6,6 +6,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {ComponentToPrint} from '../component/componentToPrint'
 
+
 function POSPage() {
 const[products,setProducts]=useState([])
 const[isLoading,setIsLoading]=useState(false) 
@@ -134,7 +135,9 @@ const fetchProducts = async() => {
                     </tr>
                   </thead>
                   <tbody>
-                    { cart ? cart.map((cartProduct, key) => <tr key={key}>
+                    { cart ? cart.map((cartProduct, key) =>
+                       
+                      <tr key={key}>
                       <td>{cartProduct.id}</td>
                       <td>{cartProduct.name}</td>
                       <td>{cartProduct.price}</td>
@@ -165,6 +168,7 @@ const fetchProducts = async() => {
 
         </div>
        </div>
+    
     </MainLayout>
   )
 }

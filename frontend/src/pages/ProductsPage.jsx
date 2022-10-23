@@ -1,88 +1,58 @@
-import axios from 'axios';
+
 import React from 'react'
+import AddProduct from '../component/AddProduct'
 import MainLayout from '../layouts/MainLayout'
-
+import axios from 'axios'
+import {useEffect ,useState} from 'react'
+import SearchBar from '../component/SearchBar'
+import DeleteProduct from '../component/DeleteProduct'
 function ProductsPage() {
-
-  let base64code = ""
-
-  const onChange = e => {
-    const files = e.target.files;
-    const file = files[0];
-    getBase64(file);
-  };
- 
-  const onLoad = fileString => {
-    console.log(fileString);
-    base64code = fileString
-  };
- 
-  const getBase64 = file => {
-    const preview = document.querySelector("#img_previwe");
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {//triggerd when finish read file
-      onLoad(  preview.src=reader.result);
-    
-    };
-  };
-
-function saveNew(){
-console.log("hooooooo");
-const newname = document.querySelector("#name");
-const newprice = document.querySelector("#price");
-const newpreview = document.querySelector("#img_previwe").getAttribute("src");
- let  opt = {
-  url:'http://localhost:5000/products',
-  method:'post',
-  data:{
-    name:newname,
-    price:Number(newprice),
-    img:newpreview
-  }
-}
-axios(opt).then(function(data_res){
-  console.log(data_res)
-  if(data_res.status == 200){
-    alert("hiiiiiiiiii,sucsess")
-  }
+  const[products,setProducts]=useState([])
   
-})
-.catch(function(ex){
-  console.log(ex);
-})
 
 
-}
+  // const deleteProduct=()=>deleteProduct(products)
+  const fetchProducts = async() => {
 
+    const result = await axios.get('products');
+    setProducts(await result.data);
 
+  }
 
+    useEffect(() => {
+        fetchProducts()
+    },[])
   return (
     <MainLayout>
-   
-          <form>
-          <div className="mb-3">
-               <label htmlFor="name" className="form-label" >name</label>
-               <input type="text" className="name" id="name" autocomplete='off' />
-          </div>
-          <div className="mb-3">
-                <label htmlFor="price" className="form-label">price</label>
-                <input type="text" className="price" id="price" />
-          </div>
-          <div className="mb-3">
-               <label htmlFor="img" className="form-label">image</label>
-               <input type="file" className="img" id="img"   onChange={onChange}/>
-               {/* onChange={onChange} */}
-               {/* <textarea rows="50" cols="50" value={base64code}></textarea> */}
-           </div>
- 
-            <img id="img_previwe" src="" height={200} alt="previwe......" />
-           <button type="button" className="btn btn-primary" onClick={saveNew}>add</button>
-        </form>
+      <SearchBar  data={products}/ >
+   <table  class="table  table-sm table-responsive ">
+    <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">code</th>
+      <th scope="col">category</th>
+      <th scope="col">image</th>
+    </tr>
+  </thead>
+  <tbody>
+      {products ? products.map((product, key) =>
+      <tr key={key}>
+      <td>{product.id}</td>
+      <td>{product.name}</td>
+      <td>{product.code}</td>
+      <td></td>
+      <td>{product.image}</td>
+      <DeleteProduct products={products} setProducts={setProducts} id={product.id}/>
+      {/* <button  type="button" class="btn btn-outline-primary p-1 m-1">DELETE</button> */}
+      <button  type="button" class="btn btn-outline-primary p-1 m-1">UPDATE</button>
+      </tr>) : "thers no product"}
+  </tbody>
+</table>
+ <button type="button" className="btn btn-primary">add</button>
+  <AddProduct />
     </MainLayout>
-   
- 
-  )
-}
+  )}
+
 
 export default ProductsPage

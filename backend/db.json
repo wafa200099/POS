@@ -1,3 +1,130 @@
 {
-    "products":[]
+  "products": [
+    {
+      "id": 1,
+      "name": "orange",
+      "code": 120,
+      "price": "2",
+      "image": "https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_960_720.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Milk",
+      "code": 120,
+      "price": "3",
+      "image": "https://cdn.pixabay.com/photo/2020/01/10/12/49/milk-4755234_960_720.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Ice Crame",
+      "code": 120,
+      "price": "4",
+      "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_960_720.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Salmon",
+      "code": 120,
+      "price": "10",
+      "image": "https://cdn.pixabay.com/photo/2010/12/13/10/25/canape-2802_960_720.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Watermelon",
+      "code": 120,
+      "price": "2",
+      "image": "https://cdn.pixabay.com/photo/2015/06/19/16/48/watermelon-815072_960_720.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Potato",
+      "code": 120,
+      "price": "4",
+      "image": "https://cdn.pixabay.com/photo/2016/08/11/08/49/potatoes-1585075_960_720.jpg"
+    },
+    {
+      "id": 10,
+      "name": "waafaf",
+      "code": "1234",
+      "price": "33",
+      "image": "sffbfdb"
+    },
+    {
+      "id": 0.8629215471968734,
+      "name": "waafafarfrfg",
+      "code": "1234",
+      "price": "33",
+      "image": "sffbfdb"
+    },
+    {
+      "id": 1666478112633.4517,
+      "name": "waafafarfrfg",
+      "code": "1234",
+      "price": "33",
+      "image": "sffbfdb"
+    },
+    {
+      "id": 1666540668877.6553,
+      "name": "wafa",
+      "code": "123345",
+      "price": "3",
+      "image": "wafaalt"
+    },
+    {
+      "id": 1666540876155.8318,
+      "name": "",
+      "code": "",
+      "price": "",
+      "image": ""
+    },
+    {
+      "id": 1666540877470.7473,
+      "name": "",
+      "code": "",
+      "price": "",
+      "image": ""
+    },
+    {
+      "id": 1666540935756.178,
+      "name": "",
+      "code": "",
+      "price": "",
+      "image": ""
+    },
+    {
+      "id": 1666540936205.3357,
+      "name": "",
+      "code": "",
+      "price": "",
+      "image": ""
+    },
+    {
+      "id": 1666540936420.043,
+      "name": "",
+      "code": "",
+      "price": "",
+      "image": ""
+    },
+    {
+      "id": 1666540990796.3184,
+      "name": "",
+      "code": "",
+      "price": "",
+      "image": ""
+    },
+    {
+      "id": 1666540992158.711,
+      "name": "",
+      "code": "",
+      "price": "",
+      "image": ""
+    },
+    {
+      "id": 1666541003918.0913,
+      "name": "wafarst",
+      "code": "1234ysyj",
+      "price": "",
+      "image": "2dggj"
+    }
+  ]
 }
