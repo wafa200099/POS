@@ -1,10 +1,9 @@
-// import { useState } from "react"
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
- const AddProduct = ({products,setProducts}) => {
+ const EditProduct = ({products,setProducts}) => {
   const toastOptions = {
     autoClose: 400,
     pauseOnHover: true,
@@ -48,4 +47,4 @@ import 'react-toastify/dist/ReactToastify.css';
     )
 }
 
-export default AddProduct
+export default EditProduct

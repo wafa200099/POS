@@ -1,17 +1,26 @@
 
 import React from 'react'
-// import AddProduct from '../component/AddProduct'
 import MainLayout from '../layouts/MainLayout'
 import axios from 'axios'
-import {useEffect ,useState} from 'react'
+import {useEffect ,useState ,Fragment} from 'react'
 import SearchBar from '../component/SearchBar'
 import '../assets/CSS/ProductPage.css'
 import ModalDialog from '../component/ModalDialog'
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReadOnlyRow from '../component/ReadOnlyRow'
+import EditableRow from '../component/EditableRow'
 
 function ProductsPage() {
   const[products,setProducts]=useState([])
+  const[editProductId,setEditProductId]=useState(null)
+  const [editFormData, setEditFormData] = useState({
+    name: "",
+    code: "",
+    category: "",
+    image: "",
+  });
+
   const toastOptions = {
     autoClose: 400,
     pauseOnHover: true,
@@ -37,48 +46,62 @@ function ProductsPage() {
       toast(`Product Removed Successfully`,toastOptions)
       }
 
-    //   useEffect(() => {
-     
-    //    deleteProduct(products.id)
-        
-    // },[products])
+
+    const handleEditClick=(e,product)=>{
+          e.preventDefault();
+          setEditProductId(product.id)
+          const formValues = {
+            name: product.name,
+             code: product.code,
+             category: product.category,
+             image: product.image,
+           };
+       
+           setEditFormData(formValues);
+    }
+
+    const handleEditFormChange = (event) => {
+      event.preventDefault();
+  
+      const fieldName = event.target.getAttribute("name");
+      const fieldValue = event.target.value;
+  
+      const newFormData = { ...editFormData };
+      newFormData[fieldName] = fieldValue;
+  
+      setEditFormData(newFormData);
+    };
+    const handleCancelClick = () => {
+      setEditProductId(null);
+    };
 
   return (
 
     <MainLayout>
        <SearchBar  data={products}/ >
-              <ModalDialog products={products} setProducts={setProducts} />
-
-
-    <table  class="table  table-sm table-responsive ">
-    <thead>
-    <tr>
-      {/* <th scope="col">id</th> */}
-      <th scope="col">name</th>
-      <th scope="col">code</th>
-      <th scope="col">category</th>
-      <th scope="col">image</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-      {products ? products.map((product, key) =>
-      <tr key={key}>
-      {/* <td>{product.id}</td> */}
-      <td>{product.name}</td>
-      <td>{product.code}</td>
-      <td></td>
-      <td>{product.image}</td>
- 
-      {/* <DeleteProduct products={products} setProducts={setProducts} id={product.id}/> */}
-      <button  type="button" class="btn btn-outline-primary p-1 m-1" onClick={()=>deleteProduct(product.id)}>DELETE</button>
-      <button  type="button" class="btn btn-outline-primary p-1 m-1">UPDATE</button>
-      </tr>) : "thers no product"}
-  </tbody>
-</table>
-
-
- {/* <AddProduct  /> */}
+       <ModalDialog products={products} setProducts={setProducts} />
+        <form>
+           <table  class="table  table-sm table-responsive ">
+           <thead>
+           <tr>
+             <th scope="col">name</th>
+             <th scope="col">code</th>
+             <th scope="col">category</th>
+             <th scope="col">image</th>
+             <th scope="col">Action</th>
+           </tr>
+           </thead>
+           <tbody>
+           { products.map((product, key) =>
+   
+          <Fragment>
+            {editProductId === product.id ? <EditableRow editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} /> : 
+            <ReadOnlyRow product={product} key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
+           </Fragment>
+            )}
+         </tbody>
+        </table>
+      </form>
     </MainLayout>
   )}
 
