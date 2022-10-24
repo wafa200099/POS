@@ -4,12 +4,15 @@ import MainLayout from '../layouts/MainLayout'
 function HomePage() {
   return (
       <MainLayout>
-            <div className='bg-light p-5 mt-4 rounded-3'>
-            <h1>Welcome to the simple POS for small buiness</h1>
-            <p>Labore tempor ipsum duis ea exercitation laboris laborum mollit qui exercitation.</p>
-            <p>If you have an issue, call 443-444-xxxx anytimes</p>
-            <Link to='/pos' className='btn btn-primary'>Click here to sell products</Link>
+            <div className='bg-light p-5 mt-4 rounded-4 text-center'>
+            <h1>Welcome to  our  POS for small buiness</h1>
+            <img src='https://thumbs.dreamstime.com/b/rating-score-vector-illustration-tiny-people-customers-feedbacks-reviews-rating-score-vector-illustration-isolated-171503809.jpg' width={"50%"} height={"400px"} />    
             </div>
+            <div className='text-center bg-light mb-5'>
+            <Link to='/pos'  ><button className='btn btn-primary '>Click here to sell products</button></Link>
+            </div>
+           
+       
     </MainLayout>
   )
 }

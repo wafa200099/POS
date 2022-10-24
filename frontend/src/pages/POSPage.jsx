@@ -85,6 +85,7 @@ const fetchProducts = async() => {
       const removeProduct=async(product)=>{
        const newCart=cart.filter(cartItem=> cartItem.id !== product.id)
        setCart(newCart)
+      //  toast(`remove ${product.name} from cart`, toastOptions)
       }
 
 
