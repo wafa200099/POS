@@ -6,14 +6,23 @@ function MainLayout({children}) {
   return (
     <div>
     <header>
-    <nav className="navbar bg-light bg-primary">
-    <div className="container">
-       <Link to="/" className="navbar-brand">HOME</Link>
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div className='ml-2 w-50 m-3'> <Link to="/" className="navbar-brand  w-50 ">HOME</Link></div> 
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item px-5">
        <Link to="/pos" className="navbar-brand">POS</Link>
-       <Link to="/productspage" className="navbar-brand">Products</Link>
-       <Link to="/productcatagories" className="navbar-brand">Product Catagories</Link>
-        </div>
-    </nav>
+      </li>
+      <li class="nav-item px-5">
+      <Link to="/productspage" className="navbar-brand">Products</Link>
+      </li>
+      <li class="nav-item  px-5">
+      <Link to="/productcatagories" className="navbar-brand">Product Catagories</Link>
+      </li>
+    </ul>
+  </div>
+</nav>
     </header>
     <main>
     <div className='container mt-3'>

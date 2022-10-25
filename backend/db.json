@@ -4,18 +4,71 @@
       "id": 1,
       "name": "orange",
       "code": 120,
+      "price": "2",
       "category": [
         {
-          "catname": "Fruit"
+          "name": "Fruits"
+          
+        },
+        {
+          "name": "Vegetables"
+          
+        },
+        {
+          "name": "Drinks"
+          
+        },
+        {
+          "name": "Bakary"
+          
         }
+        ,
+        {
+          "name": "Sweet"
+          
+        },
+        {
+          "name": "Bakary"
+          
+        }
+        
+
       ],
-      "price": "2",
       "image": "https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_960_720.jpg"
     },
     {
       "id": 2,
       "name": "Milk",
       "code": 120,
+      "category": [
+        {
+          "name": "Fruits"
+          
+        },
+        {
+          "name": "Vegetables"
+          
+        },
+        {
+          "name": "Drinks"
+          
+        },
+        {
+          "name": "Bakary"
+          
+        }
+        ,
+        {
+          "name": "Sweet"
+          
+        },
+        {
+          "name": "Bakary"
+          
+        }
+        
+
+      ],
       "price": "3",
       "image": "https://cdn.pixabay.com/photo/2020/01/10/12/49/milk-4755234_960_720.jpg"
     },
@@ -23,6 +76,35 @@
       "id": 3,
       "name": "Ice Crame",
       "code": 120,
+      "category": [
+        {
+          "name": "Fruits"
+          
+        },
+        {
+          "name": "Vegetables"
+          
+        },
+        {
+          "name": "Drinks"
+          
+        },
+        {
+          "name": "Bakary"
+          
+        }
+        ,
+        {
+          "name": "Sweet"
+          
+        },
+        {
+          "name": "Bakary"
+          
+        }
+        
+
+      ],
       "price": "4",
       "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_960_720.jpg"
     },
@@ -30,6 +112,35 @@
       "id": 4,
       "name": "Salmon",
       "code": 120,
+      "category": [
+        {
+          "name": "Fruits"
+          
+        },
+        {
+          "name": "Vegetables"
+          
+        },
+        {
+          "name": "Drinks"
+          
+        },
+        {
+          "name": "Bakary"
+          
+        }
+        ,
+        {
+          "name": "Sweet"
+          
+        },
+        {
+          "name": "Bakary"
+          
+        }
+        
+
+      ],
       "price": "10",
       "image": "https://cdn.pixabay.com/photo/2010/12/13/10/25/canape-2802_960_720.jpg"
     },
@@ -37,15 +148,37 @@
       "id": 5,
       "name": "Watermelon",
       "code": 120,
+      "category": [
+        {
+          "name": "Fruits"
+          
+        },
+        {
+          "name": "Vegetables"
+          
+        },
+        {
+          "name": "Drinks"
+          
+        },
+        {
+          "name": "Bakary"
+          
+        }
+        ,
+        {
+          "name": "Sweet"
+          
+        },
+        {
+          "name": "Bakary"
+          
+        }
+        
+
+      ],
       "price": "2",
       "image": "https://cdn.pixabay.com/photo/2015/06/19/16/48/watermelon-815072_960_720.jpg"
-    },
-    {
-      "id": 1666690292877.5864,
-      "name": "wafaaalomkotrhth",
-      "code": "123",
-      "category": "1233",
-      "image": "\thttps://cdn.pixabay.com/photo/2015/06/19/16/48/watermelon-815072_960_720.jpg"
     }
   ]
 }

@@ -127,7 +127,7 @@ const fetchProducts = async() => {
                 <table className='table table-responsive table-dark table-hover'>
                   <thead>
                     <tr>
-                      <td>#</td>
+                      {/* <td>#</td> */}
                       <td>Name</td>
                       <td>Price</td>
                       <td>Qty</td>
@@ -139,7 +139,7 @@ const fetchProducts = async() => {
                     { cart ? cart.map((cartProduct, key) =>
                        
                       <tr key={key}>
-                      <td>{cartProduct.id}</td>
+                      {/* <td>{cartProduct.id}</td> */}
                       <td>{cartProduct.name}</td>
                       <td>{cartProduct.price}</td>
                       <td>{cartProduct.quantity}</td>

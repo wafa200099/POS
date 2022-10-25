@@ -10,7 +10,7 @@ function ModalDialog({products,setProducts}) {
       };
   return (
     <>
-      <Button variant="primary" onClick={toggleShowModal}>
+      <Button variant="primary" onClick={toggleShowModal} className="mb-4">
       ADD PRODUCT
       </Button>
       <Modal show={showModal}>

@@ -7,7 +7,6 @@ padding: 0;
 .searchInputs {
     margin-top: 50px;
     display: flex;
-  
     margin-bottom: 2rem;
 
   }
@@ -17,7 +16,7 @@ padding: 0;
     width: 30%;
     background-color: rgb(222, 222, 245);
     border-radius: 4px 0 0 4px;
-    border: 2px solid #5d0cff;
+    border: 1px solid #5d0cff;
     padding: 5px;
     outline: none;
     /* margin-left: 90px; */
@@ -29,7 +28,7 @@ padding: 0;
 
 .searchIcon{
 
-    border: 2px solid #5d0cff;
+    border: 1px solid #5d0cff;
     background-color: rgb(222, 222, 245);
     height: 50px;
     width: 40px;
@@ -37,10 +36,11 @@ padding: 0;
     place-items: center;
     color: rgb(34, 32, 32);
     cursor: pointer;
+    border-radius: 0 4px 4px 0;
 
 }
 .dataResult{
     
-    background-color: rgb(255, 133, 133);
+    background-color: rgb(255, 255, 255);
     margin-bottom: 500px;
 }

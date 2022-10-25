@@ -35,13 +35,13 @@ import 'react-toastify/dist/ReactToastify.css';
       >
         <Form >
                <div><label htmlFor="name">Name</label></div>
-               <div ><Field  className=' bg-light rounded-3 border-1  border-primary' id="name" name="name" type="text"/></div>
+               <div ><Field  className=' form-control bg-light rounded-3 border-1  border-primary' id="name" name="name" type="text"/></div>
                <div><label htmlFor="price">price</label></div>
-               <div><Field className=' bg-light rounded-3 border-1  border-primary' id="price" name="price" type="number"/></div>
+               <div><Field className='form-control bg-light rounded-3 border-1  border-primary' id="price" name="price" type="number"/></div>
                <div><label htmlFor="code">code</label></div>
-               <div><Field className=' bg-light rounded-3 border-1  border-primary' id="code" name="code" type="text"/></div>
+               <div><Field className=' form-control bg-light rounded-3 border-1  border-primary' id="code" name="code" type="text"/></div>
                <div><label htmlFor="image">image</label></div>
-               <div><Field className=' bg-light rounded-3 border-1  border-primary' id="image" name="image" type="text"/></div>
+               <div><Field className='form-control bg-light rounded-3 border-1  border-primary' id="image" name="image" type="text"/></div>
               <input type="submit" className=" btn btn-primary mt-2"/>
         </Form>
         </Formik>

@@ -4,7 +4,6 @@ import MainLayout from '../layouts/MainLayout'
 import axios from 'axios'
 import {useEffect ,useState ,Fragment} from 'react'
 import SearchBar from '../component/SearchBar'
-import '../assets/CSS/ProductPage.css'
 import ModalDialog from '../component/ModalDialog'
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,7 +16,8 @@ function ProductsPage() {
   const [editFormData, setEditFormData] = useState({
     name: "",
     code: "",
-    category: "",
+    price:"",
+    category: [],
     image: "",
   });
 
@@ -53,7 +53,8 @@ function ProductsPage() {
           const formValues = {
             name: product.name,
              code: product.code,
-             category: product.category,
+             price:product.price,
+             category:product.category&&product.category.map((data)=>data.name),
              image: product.image,
            };
        
@@ -80,7 +81,8 @@ function ProductsPage() {
              id:editProductId,
              name: editFormData.name,
              code: editFormData.code,
-             category: editFormData.category,
+             price:editFormData.price,
+             category: editFormData.category&&editFormData.category.map((data)=>data.name),
              image: editFormData.image,
       };
       const newProducts = [...products];
@@ -104,21 +106,23 @@ function ProductsPage() {
        <SearchBar  data={products}/ >
        <ModalDialog products={products} setProducts={setProducts} />
         <form onSubmit={handleEditFormSubmit}>
-           <table  class="table  table-sm table-responsive ">
-           <thead>
+           <table  class="table table-responsive table-sm">
+           <thead >
            <tr>
-             <th scope="col">name</th>
-             <th scope="col">code</th>
-             <th scope="col">category</th>
-             <th scope="col">image</th>
+             <th scope="col">Name</th>
+             <th scope="col">Code</th>
+             <th scope="col">Price</th>
+             <th scope="col">Category</th>
+             <th scope="col">Image</th>
              <th scope="col">Action</th>
            </tr>
            </thead>
            <tbody>
            { products.map((product, key) =>
+        
    
           <Fragment>
-            {editProductId === product.id ? <EditableRow editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
+            {editProductId === product.id ? <EditableRow  key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
             <ReadOnlyRow product={product} key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
            </Fragment>
             )}
