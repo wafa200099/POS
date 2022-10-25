@@ -74,13 +74,36 @@ function ProductsPage() {
     const handleCancelClick = () => {
       setEditProductId(null);
     };
+    const handleEditFormSubmit =async (event) => {
+      event.preventDefault();
+      const editedProduct = {
+             id:editProductId,
+             name: editFormData.name,
+             code: editFormData.code,
+             category: editFormData.category,
+             image: editFormData.image,
+      };
+      const newProducts = [...products];
+       // index of row we are editing now
+      const index = products.findIndex((product) => product.id === editProductId);
+      newProducts[index] = editedProduct;
+      await fetch(`http://localhost:5000/products/${editProductId}`,{
+        method: 'PUT', 
+        headers: {
+         'Content-type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify(editedProduct) 
+       })
+      setProducts(newProducts);
+      setEditProductId(null);
 
+    };
   return (
 
     <MainLayout>
        <SearchBar  data={products}/ >
        <ModalDialog products={products} setProducts={setProducts} />
-        <form>
+        <form onSubmit={handleEditFormSubmit}>
            <table  class="table  table-sm table-responsive ">
            <thead>
            <tr>
@@ -95,7 +118,7 @@ function ProductsPage() {
            { products.map((product, key) =>
    
           <Fragment>
-            {editProductId === product.id ? <EditableRow editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} /> : 
+            {editProductId === product.id ? <EditableRow editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
             <ReadOnlyRow product={product} key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
            </Fragment>
             )}
