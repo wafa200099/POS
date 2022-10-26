@@ -5,7 +5,7 @@ import axios from 'axios';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {ComponentToPrint} from '../component/componentToPrint'
-
+import SideNavBarLayout from '../layouts/SideNavBarLayout'
 
 function POSPage() {
 const[products,setProducts]=useState([])
@@ -102,6 +102,7 @@ const fetchProducts = async() => {
     
   return (
     <MainLayout>
+      <SideNavBarLayout />
     <div className='row'>
       <div className='col-lg-8'>
         {isLoading ? 'Loading' : <div className='row'>

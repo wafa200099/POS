@@ -2,11 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../layouts/MainLayout.css'
 function MainLayout({children}) {
   return (
     <div>
     <header>
-   
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <div className='ml-2 w-50 m-3'> <Link to="/" className="navbar-brand  w-50 ">HOME</Link></div> 
   <div class="collapse navbar-collapse">
@@ -24,6 +25,7 @@ function MainLayout({children}) {
   </div>
 </nav>
     </header>
+   
     <main>
     <div className='container mt-3'>
     {children}

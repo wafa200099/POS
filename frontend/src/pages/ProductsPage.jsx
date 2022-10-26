@@ -9,7 +9,8 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReadOnlyRow from '../component/ReadOnlyRow'
 import EditableRow from '../component/EditableRow'
-
+import SideNavBarLayout from '../layouts/SideNavBarLayout'
+import Pagination from '../component/Pagination'
 function ProductsPage() {
   const[products,setProducts]=useState([])
   const[editProductId,setEditProductId]=useState(null)
@@ -20,6 +21,7 @@ function ProductsPage() {
     category: [],
     image: "",
   });
+  const [currentPage, setCurrentPage] = useState(1);
 
   const toastOptions = {
     autoClose: 400,
@@ -103,6 +105,7 @@ function ProductsPage() {
   return (
 
     <MainLayout>
+      <SideNavBarLayout />
        <SearchBar  data={products}/ >
        <ModalDialog products={products} setProducts={setProducts} />
         <form onSubmit={handleEditFormSubmit}>
@@ -128,6 +131,14 @@ function ProductsPage() {
             )}
          </tbody>
         </table>
+        <div className="container">
+      <Pagination
+        currentPage={currentPage}
+        total={100}
+        limit={10}
+        onPageChange={(page) => setCurrentPage(page)}
+      />
+    </div>
       </form>
     </MainLayout>
   )}
