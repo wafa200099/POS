@@ -13,6 +13,7 @@ import SideNavBarLayout from '../layouts/SideNavBarLayout'
 import Pagination from '../component/Pagination'
 function ProductsPage() {
   const[products,setProducts]=useState([])
+  const[isSearch,setIsSearch]=useState(false)
   const[editProductId,setEditProductId]=useState(null)
   const [editFormData, setEditFormData] = useState({
     name: "",
@@ -21,7 +22,7 @@ function ProductsPage() {
     category: [],
     image: "",
   });
-  const [currentPage, setCurrentPage] = useState(1);
+
 
   const toastOptions = {
     autoClose: 400,
@@ -56,7 +57,7 @@ function ProductsPage() {
             name: product.name,
              code: product.code,
              price:product.price,
-             category:product.category&&product.category.map((data)=>data.name),
+             category:product.category,
              image: product.image,
            };
        
@@ -84,7 +85,7 @@ function ProductsPage() {
              name: editFormData.name,
              code: editFormData.code,
              price:editFormData.price,
-             category: editFormData.category&&editFormData.category.map((data)=>data.name),
+             category: editFormData.category,
              image: editFormData.image,
       };
       const newProducts = [...products];
@@ -102,11 +103,23 @@ function ProductsPage() {
       setEditProductId(null);
 
     };
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage ,setProductsPerPage] = useState(10);
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  
+
+    // const handleChangeRowsPerPage=(num)=>{
+    //   setProductsPerPage(parseInt(num));
+    // }
+    // Change page
+    const paginate = pageNumber => setCurrentPage(pageNumber);
   return (
 
     <MainLayout>
       <SideNavBarLayout />
-       <SearchBar  data={products}/ >
+       <SearchBar currentProducts={currentProducts} deleteProduct={deleteProduct} editProductId={editProductId} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} handleEditClick={handleEditClick} handleEditFormSubmit={handleEditFormSubmit} / >
        <ModalDialog products={products} setProducts={setProducts} />
         <form onSubmit={handleEditFormSubmit}>
            <table  class="table table-responsive table-sm">
@@ -121,25 +134,26 @@ function ProductsPage() {
            </tr>
            </thead>
            <tbody>
-           { products.map((product, key) =>
-        
-   
+           { currentProducts.map((currentProduct, key) =>
           <Fragment>
-            {editProductId === product.id ? <EditableRow  key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
-            <ReadOnlyRow product={product} key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
+            {editProductId ===currentProduct.id ? <EditableRow  key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
+            <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
            </Fragment>
             )}
          </tbody>
         </table>
         <div className="container">
-      <Pagination
-        currentPage={currentPage}
-        total={100}
-        limit={10}
-        onPageChange={(page) => setCurrentPage(page)}
+        <Pagination
+        rowsPerPageOptions={[5, 10, 25]}
+        setProductsPerPage={setProductsPerPage}
+        productsPerPage={productsPerPage}
+        totalProducts={products.length}
+        paginate={paginate}
+        // onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </div>
       </form>
+   
     </MainLayout>
   )}
 

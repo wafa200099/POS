@@ -112,7 +112,7 @@ const fetchProducts = async() => {
                     <p>{product.name}</p>
                     <img src={product.image} className="img-fluid" alt={product.name} />
                     <p>${product.price}</p>
-                    <button className='addProduct' onClick={()=> addProductToCart(product)} >Add</button>
+                    <button className='btn btn-primary mb-2' onClick={()=> addProductToCart(product)} ><i class="fa-solid fa-plus"></i></button>
                 </div>
 
               </div>
