@@ -6,8 +6,6 @@ import ReadOnlyRow from '../component/ReadOnlyRow'
 import EditableRow from '../component/EditableRow'
 import ReadOnlyRowCat from '../component/ReadOnlyRowCat'
 import EditableRowCat from '../component/EditableRowCat'
-
-// import Pagination from '../component/Pagination'
 function SearchBar({ currentProducts,editProductId,editFormData,handleEditFormChange,handleCancelClick,deleteProduct,handleEditClick,handleEditFormSubmit,
   categories,
   editCatagorieId,
@@ -85,9 +83,10 @@ function SearchBar({ currentProducts,editProductId,editFormData,handleEditFormCh
             
            {currentProducts ? filteredData.map((currentProduct, key) =>
           <Fragment>
-            {editProductId ===currentProduct.id ? <EditableRow  key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
-            <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
-           </Fragment>
+          {editProductId ===currentProduct.id ? 
+          <EditableRow categories={categories} key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
+          <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
+         </Fragment>
             ):null}
 
        {categories ? filteredData.map((category, key) =>

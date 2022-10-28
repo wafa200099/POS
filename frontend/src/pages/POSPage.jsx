@@ -85,7 +85,7 @@ const fetchProducts = async() => {
       const removeProduct=async(product)=>{
        const newCart=cart.filter(cartItem=> cartItem.id !== product.id)
        setCart(newCart)
-      //  toast(`remove ${product.name} from cart`, toastOptions)
+       toast(`remove ${product.name} from cart`, toastOptions)
       }
 
 
@@ -103,7 +103,14 @@ const fetchProducts = async() => {
   return (
     <MainLayout>
       <SideNavBarLayout />
+    
     <div className='row'>
+    <div className="filters" class="text-center d-flex">
+     <button class="btn btn-info m-3 ">Drinks</button>
+     <button class="btn btn-info m-3">Fruits</button>
+     <button class="btn btn-info m-3">Vegitabels</button>
+     <button class="btn btn-info m-3">Bakary</button>
+    </div>
       <div className='col-lg-8'>
         {isLoading ? 'Loading' : <div className='row'>
             {products.map((product, key) =>
@@ -128,7 +135,6 @@ const fetchProducts = async() => {
                 <table className='table table-responsive table-dark table-hover'>
                   <thead>
                     <tr>
-                      {/* <td>#</td> */}
                       <td>Name</td>
                       <td>Price</td>
                       <td>Qty</td>
@@ -140,10 +146,13 @@ const fetchProducts = async() => {
                     { cart ? cart.map((cartProduct, key) =>
                        
                       <tr key={key}>
-                      {/* <td>{cartProduct.id}</td> */}
                       <td>{cartProduct.name}</td>
                       <td>{cartProduct.price}</td>
-                      <td>{cartProduct.quantity}</td>
+                      <td>
+                        <button>+</button>
+                        {cartProduct.quantity}
+                        <button>-</button>
+                      </td>
                       <td>{cartProduct.total}</td>
                       <td>
                         <button className='btn btn-danger btn-sm' onClick={() => removeProduct(cartProduct)} >Remove</button>

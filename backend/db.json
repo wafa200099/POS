@@ -1,46 +1,26 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "nfd",
-      "code": "120223",
-      "price": "2",
-      "category": "wwwtyu",
-      "image": "https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_960_720.jpg"
-    },
-    {
       "id": 2,
-      "name": "Milkkkkk",
+      "name": "Milk",
       "code": 120,
+      "category": "Drinks",
       "price": "3",
-      "category": [
-        {
-          "name": "Drink"
-        }
-      ],
       "image": "https://cdn.pixabay.com/photo/2020/01/10/12/49/milk-4755234_960_720.jpg"
     },
     {
       "id": 3,
       "name": "Ice Crame",
       "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
       "price": "4",
+      "category": "Vegitabels",
       "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_960_720.jpg"
     },
     {
       "id": 5,
       "name": "Watermelon",
       "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
+      "category": "Fruits",
       "price": "2",
       "image": "https://cdn.pixabay.com/photo/2015/06/19/16/48/watermelon-815072_960_720.jpg"
     },
@@ -48,11 +28,7 @@
       "id": 1,
       "name": "orange",
       "code": 120,
-      "category": [
-        {
-          "name": "Drink"
-        }
-      ],
+      "category": "Fruits",
       "price": "2",
       "image": "https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_960_720.jpg"
     },
@@ -60,11 +36,7 @@
       "id": 2,
       "name": "Milk",
       "code": 120,
-      "category": [
-        {
-          "name": "Drink"
-        }
-      ],
+      "category": "Drinks",
       "price": "3",
       "image": "https://cdn.pixabay.com/photo/2020/01/10/12/49/milk-4755234_960_720.jpg"
     },
@@ -72,35 +44,39 @@
       "id": 3,
       "name": "Ice Crame",
       "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
+      "category": "Drinks",
       "price": "4",
       "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_960_720.jpg"
     },
     {
-      "id": 4,
-      "name": "Salmon",
+      "id": 1,
+      "name": "orange",
       "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
-      "price": "10",
-      "image": "https://cdn.pixabay.com/photo/2010/12/13/10/25/canape-2802_960_720.jpg"
+      "price": "2",
+      "category": "Fruits",
+      "image": "https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_960_720.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Milk",
+      "code": 120,
+      "category": "Drinks",
+      "price": "3",
+      "image": "https://cdn.pixabay.com/photo/2020/01/10/12/49/milk-4755234_960_720.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Ice Crame",
+      "code": 120,
+      "category": "Drinks",
+      "price": "4",
+      "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_960_720.jpg"
     },
     {
       "id": 5,
       "name": "Watermelon",
       "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
+      "category": "Fruits",
       "price": "2",
       "image": "https://cdn.pixabay.com/photo/2015/06/19/16/48/watermelon-815072_960_720.jpg"
     },
@@ -108,11 +84,7 @@
       "id": 1,
       "name": "orange",
       "code": 120,
-      "category": [
-        {
-          "name": "Drink"
-        }
-      ],
+      "category": "Fruits",
       "price": "2",
       "image": "https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_960_720.jpg"
     },
@@ -120,11 +92,7 @@
       "id": 2,
       "name": "Milk",
       "code": 120,
-      "category": [
-        {
-          "name": "Drink"
-        }
-      ],
+      "category": "Drinks",
       "price": "3",
       "image": "https://cdn.pixabay.com/photo/2020/01/10/12/49/milk-4755234_960_720.jpg"
     },
@@ -132,11 +100,7 @@
       "id": 3,
       "name": "Ice Crame",
       "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
+      "category": "Drinks",
       "price": "4",
       "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_960_720.jpg"
     },
@@ -144,138 +108,27 @@
       "id": 4,
       "name": "Salmon",
       "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
+      "category": "Fished",
       "price": "10",
       "image": "https://cdn.pixabay.com/photo/2010/12/13/10/25/canape-2802_960_720.jpg"
-    },
-    {
-      "id": 5,
-      "name": "Watermelon",
-      "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
-      "price": "2",
-      "image": "https://cdn.pixabay.com/photo/2015/06/19/16/48/watermelon-815072_960_720.jpg"
-    },
-    {
-      "id": 1,
-      "name": "orange",
-      "code": 120,
-      "category": [
-        {
-          "name": "Drink"
-        }
-      ],
-      "price": "2",
-      "image": "https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_960_720.jpg"
-    },
-    {
-      "id": 2,
-      "name": "Milk",
-      "code": 120,
-      "category": [
-        {
-          "name": "Drink"
-        }
-      ],
-      "price": "3",
-      "image": "https://cdn.pixabay.com/photo/2020/01/10/12/49/milk-4755234_960_720.jpg"
-    },
-    {
-      "id": 3,
-      "name": "Ice Crame",
-      "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
-      "price": "4",
-      "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_960_720.jpg"
-    },
-    {
-      "id": 4,
-      "name": "Salmon",
-      "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
-      "price": "10",
-      "image": "https://cdn.pixabay.com/photo/2010/12/13/10/25/canape-2802_960_720.jpg"
-    },
-    {
-      "id": 5,
-      "name": "Watermelon",
-      "code": 120,
-      "category": [
-        {
-          "name": "Fruit"
-        }
-      ],
-      "price": "2",
-      "image": "https://cdn.pixabay.com/photo/2015/06/19/16/48/watermelon-815072_960_720.jpg"
-    },
-    {
-      "id": 1666970703958.66,
-      "name": "wad",
-      "code": "dfbg",
-      "price": 3,
-      "image": " 44rgr"
     }
   ],
   "category": [
     {
       "id": 4,
-      "name": "Bakary"
+      "name": "Bakaryrr"
     },
     {
-      "id": 1666778339862.7122,
-      "name": "fafa"
+      "id": 1666972119294.7422,
+      "name": "Drinks"
     },
     {
-      "id": 1666803617657.228,
-      "name": "drinksdddd"
+      "id": 1666972133107.8474,
+      "name": "Fruites"
     },
     {
-      "id": 1666856854930.4412,
-      "name": "ggg"
-    },
-    {
-      "id": 1666856860646.1118,
-      "name": "hhh"
-    },
-    {
-      "id": 1666856863413.1946,
-      "name": "hhhhhhhhhh"
-    },
-    {
-      "id": 1666856868927.5356,
-      "name": "hhhhhhhhhhhh"
-    },
-    {
-      "id": 1666856873347.3582,
-      "name": "hu"
-    },
-    {
-      "id": 1666856881900.929,
-      "name": "hhhhhhhhh"
-    },
-    {
-      "id": 1666856886131.9614,
-      "name": "hhh"
-    },
-    {
-      "id": 1666856890835.494,
-      "name": "hhh"
+      "id": 1666972145932.6948,
+      "name": "Vegitabels"
     }
   ]
 }

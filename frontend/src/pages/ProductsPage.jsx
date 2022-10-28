@@ -28,10 +28,9 @@ function ProductsPage() {
     name: "",
     code: "",
     price:"",
-    category:"",
+    category:[],
     image: "",
   });
-
 
   const toastOptions = {
     autoClose: 400,
@@ -57,13 +56,13 @@ function ProductsPage() {
       setProducts(newProducts)
       toast(`Product Removed Successfully`,toastOptions)
       }
-
+  
 
     const handleEditClick=(e,product)=>{
           e.preventDefault();
           setEditProductId(product.id)
           const formValues = {
-            name: product.name,
+             name: product.name,
              code: product.code,
              price:product.price,
              category:product.category,
@@ -96,7 +95,11 @@ function ProductsPage() {
              price:editFormData.price,
              category: editFormData.category,
              image: editFormData.image,
+
+           
       };
+console.log( editedProduct);
+      
       const newProducts = [...products];
        // index of row we are editing now
       const index = products.findIndex((product) => product.id === editProductId);
@@ -117,12 +120,6 @@ function ProductsPage() {
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
-  
-
-    // const handleChangeRowsPerPage=(num)=>{
-    //   setProductsPerPage(parseInt(num));
-    // }
-    // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
   return (
 
@@ -144,9 +141,9 @@ function ProductsPage() {
            </thead>
            <tbody>
            { currentProducts.map((currentProduct, key) =>
-          <Fragment>
-            {editProductId ===currentProduct.id ? <EditableRow  key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
-            <ReadOnlyRow categories={categories} product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
+           <Fragment>
+            {editProductId ===currentProduct.id ? <EditableRow categories={categories} key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
+            <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
            </Fragment>
             )}
          </tbody>

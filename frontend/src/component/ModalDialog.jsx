@@ -29,7 +29,7 @@ function ModalDialog({products,setProducts,categories,setCategories}) {
           {products ? 
         <AddProduct products={products} setProducts={setProducts}/>
           :
-          <AddCategory catagories={categories} setCatagories={setCategories}/>
+          <AddCategory categories={categories} setCategories={setCategories}/>
    }
         </Modal.Body>
         <Modal.Footer>
