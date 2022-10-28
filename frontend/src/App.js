@@ -9,13 +9,13 @@ import ProductCatagories from './pages/ProductCatagories'
 import ProductsPage from "./pages/ProductsPage";
 
 
-function App() {
+function App({categories}) {
   return (
 <Router>
 <Routes>
   <Route path="/" element={<HomePage/>}/>
   <Route path="/pos" element={<POSPage/>}/>
-  <Route path="/productspage" element={<ProductsPage/>}/>
+  <Route path="/productspage" element={<ProductsPage categories={categories}/>}/>
   <Route path="/productcatagories" element={<ProductCatagories/>}/>
 </Routes>
 

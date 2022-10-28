@@ -5,23 +5,19 @@
       "name": "nfd",
       "code": "120223",
       "price": "2",
-      "category": [
-        {
-          "name": "Drink"
-        }
-      ],
+      "category": "wwwtyu",
       "image": "https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_960_720.jpg"
     },
     {
       "id": 2,
-      "name": "Milk",
+      "name": "Milkkkkk",
       "code": 120,
+      "price": "3",
       "category": [
         {
           "name": "Drink"
         }
       ],
-      "price": "3",
       "image": "https://cdn.pixabay.com/photo/2020/01/10/12/49/milk-4755234_960_720.jpg"
     },
     {
@@ -227,17 +223,16 @@
       ],
       "price": "2",
       "image": "https://cdn.pixabay.com/photo/2015/06/19/16/48/watermelon-815072_960_720.jpg"
+    },
+    {
+      "id": 1666970703958.66,
+      "name": "wad",
+      "code": "dfbg",
+      "price": 3,
+      "image": " 44rgr"
     }
   ],
   "category": [
-    {
-      "id": 2,
-      "name": "froutf"
-    },
-    {
-      "id": 3,
-      "name": "Drinks"
-    },
     {
       "id": 4,
       "name": "Bakary"
@@ -248,7 +243,39 @@
     },
     {
       "id": 1666803617657.228,
-      "name": "drinks"
+      "name": "drinksdddd"
+    },
+    {
+      "id": 1666856854930.4412,
+      "name": "ggg"
+    },
+    {
+      "id": 1666856860646.1118,
+      "name": "hhh"
+    },
+    {
+      "id": 1666856863413.1946,
+      "name": "hhhhhhhhhh"
+    },
+    {
+      "id": 1666856868927.5356,
+      "name": "hhhhhhhhhhhh"
+    },
+    {
+      "id": 1666856873347.3582,
+      "name": "hu"
+    },
+    {
+      "id": 1666856881900.929,
+      "name": "hhhhhhhhh"
+    },
+    {
+      "id": 1666856886131.9614,
+      "name": "hhh"
+    },
+    {
+      "id": 1666856890835.494,
+      "name": "hhh"
     }
   ]
 }

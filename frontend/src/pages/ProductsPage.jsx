@@ -11,15 +11,24 @@ import ReadOnlyRow from '../component/ReadOnlyRow'
 import EditableRow from '../component/EditableRow'
 import SideNavBarLayout from '../layouts/SideNavBarLayout'
 import Pagination from '../component/Pagination'
+
 function ProductsPage() {
+  const[categories,setCatagories]=useState([])
+  const fetchCatagories = async() => {
+    const result = await axios.get('category');
+    setCatagories(await result.data);
+  }
+
+    useEffect(() => {
+        fetchCatagories()
+    },[])
   const[products,setProducts]=useState([])
-  const[isSearch,setIsSearch]=useState(false)
   const[editProductId,setEditProductId]=useState(null)
   const [editFormData, setEditFormData] = useState({
     name: "",
     code: "",
     price:"",
-    category: [],
+    category:"",
     image: "",
   });
 
@@ -137,14 +146,13 @@ function ProductsPage() {
            { currentProducts.map((currentProduct, key) =>
           <Fragment>
             {editProductId ===currentProduct.id ? <EditableRow  key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
-            <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
+            <ReadOnlyRow categories={categories} product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
            </Fragment>
             )}
          </tbody>
         </table>
         <div className="container">
         <Pagination
-        rowsPerPageOptions={[5, 10, 25]}
         setProductsPerPage={setProductsPerPage}
         productsPerPage={productsPerPage}
         totalProducts={products.length}

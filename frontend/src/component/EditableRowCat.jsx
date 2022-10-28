@@ -1,6 +1,6 @@
 import React from 'react'
 
-function EditableRowCat({editFormData,handleEditFormChange,handleCancelClick ,key}) {
+function EditableRowCat({editFormData,handleEditFormChange,handleCancelClick,key}) {
   return (
   <tr key={key} >
     <td><input type="text" required="required" placeholder='Please Enter name' name='name' value={editFormData.name} onChange={handleEditFormChange} /></td>

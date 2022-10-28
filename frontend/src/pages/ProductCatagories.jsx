@@ -9,8 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import ReadOnlyRowCat from '../component/ReadOnlyRowCat'
 import EditableRowCat from '../component/EditableRowCat'
 import SideNavBarLayout from '../layouts/SideNavBarLayout'
+import Pagination from '../component/Pagination'
 function ProductCatagories() {
-  const[catagories,setCatagories]=useState([])
+  const[categories,setCategories]=useState([])
   const[editCatagorieId,setEditCatagorieId]=useState(null)
   const [editFormData, setEditFormData] = useState({
     name: "",
@@ -22,23 +23,23 @@ function ProductCatagories() {
     pauseOnHover: true,
   }
 
-  const fetchCatagories = async() => {
+  const fetchCategories = async() => {
     const result = await axios.get('category');
-    setCatagories(await result.data);
+    setCategories(await result.data);
   }
 
     useEffect(() => {
-        fetchCatagories()
+        fetchCategories()
     },[])
 
     const  deleteCategory=async(categoryId)=>{
-      const newCatagories=[...catagories]
-      const delelm =catagories.findIndex((category) =>category.id === categoryId);
+      const newCatagories=[...categories]
+      const delelm =categories.findIndex((category) =>category.id === categoryId);
       newCatagories.splice(delelm, 1);
       await fetch(`http://localhost:5000/category/${categoryId}`,{
                 method:"delete",
                 })
-      setCatagories(newCatagories)
+      setCategories(newCatagories)
       toast(`category Removed Successfully`,toastOptions)
       }
 
@@ -74,9 +75,9 @@ function ProductCatagories() {
              id:editCatagorieId,
              name: editFormData.name,
       };
-      const newCatagories = [...catagories];
+      const newCatagories = [...categories];
        // index of row we are editing now
-      const index = catagories.findIndex((category) => category.id === editCatagorieId);
+      const index = categories.findIndex((category) => category.id === editCatagorieId);
       newCatagories[index] = editCatagorieId;
       await fetch(`http://localhost:5000/category/${editCatagorieId}`,{
         method: 'PUT', 
@@ -85,16 +86,23 @@ function ProductCatagories() {
         },
         body: JSON.stringify(editedcategory) 
        })
-       setCatagories(newCatagories);
+       setCategories(newCatagories);
        setEditCatagorieId(null);
-
     };
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [categoryPerPage ,setCategoryPerPage] = useState(10);
+    const indexOfLastCategory = currentPage * categoryPerPage;
+    const indexOfFirstCategory = indexOfLastCategory - categoryPerPage;
+    const currentCategories = categories.slice(indexOfFirstCategory, indexOfLastCategory);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
   return (
 
     <MainLayout>
       <SideNavBarLayout />
-       <SearchBar  data={catagories}/ >
-       <ModalDialog catagories={catagories} setCatagories={catagories} />
+       <SearchBar  categories={categories} deleteCategory={deleteCategory} editCatagorieId={editCatagorieId} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} handleEditClick={handleEditClick} handleEditFormSubmit={handleEditFormSubmit}/ >
+       <ModalDialog categories={categories} setCatagories={categories} />
         <form onSubmit={handleEditFormSubmit}>
            <table  class="table table-responsive table-sm">
            <thead >
@@ -103,9 +111,7 @@ function ProductCatagories() {
            </tr>
            </thead>
            <tbody>
-           {catagories.map((category, key) =>
-        
-   
+           {currentCategories.map((category, key) =>
           <Fragment>
             {editCatagorieId === category.id ? <EditableRowCat  key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
             <ReadOnlyRowCat category={category} key={key} deleteCategory={deleteCategory} handleEditClick={handleEditClick}/>}
@@ -113,6 +119,14 @@ function ProductCatagories() {
             )}
          </tbody>
         </table>
+        <div className="container">
+        <Pagination
+        setCategoryPerPage={setCategoryPerPage}
+        categoryPerPage={categoryPerPage}
+        totalCategories={categories.length}
+        paginate={paginate}
+      />
+    </div>
       </form>
     </MainLayout>
   )}

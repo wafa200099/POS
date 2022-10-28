@@ -4,12 +4,17 @@ import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import ReadOnlyRow from '../component/ReadOnlyRow'
 import EditableRow from '../component/EditableRow'
-import Pagination from '../component/Pagination'
+import ReadOnlyRowCat from '../component/ReadOnlyRowCat'
+import EditableRowCat from '../component/EditableRowCat'
+
+// import Pagination from '../component/Pagination'
 function SearchBar({ currentProducts,editProductId,editFormData,handleEditFormChange,handleCancelClick,deleteProduct,handleEditClick,handleEditFormSubmit,
-   productsPerPage,
-  totalProducts,
-  paginate
+  categories,
+  editCatagorieId,
+  deleteCategory
+
 }) {
+ 
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   
@@ -17,9 +22,14 @@ function SearchBar({ currentProducts,editProductId,editFormData,handleEditFormCh
     const searchWord = event.target.value;
     setWordEntered(searchWord);
 
-    const newFilter = currentProducts.filter((product) => {
-     console.log(product.name);
+    const newFilter = currentProducts && currentProducts.filter((product) => {
       return product.name.toLowerCase().includes(searchWord.toLowerCase()) 
+      // || product.code.includes(searchWord.toLowerCase());
+     
+    });
+
+    const newFilterCategory =  categories && categories.filter((catagory) => {
+      return catagory.name.toLowerCase().includes(searchWord.toLowerCase()) 
       // || product.code.includes(searchWord.toLowerCase());
      
     });
@@ -27,7 +37,11 @@ function SearchBar({ currentProducts,editProductId,editFormData,handleEditFormCh
     if (searchWord === "") {
       setFilteredData([]);
     } else {
-      setFilteredData(newFilter);
+
+      currentProducts ? setFilteredData(newFilter): 
+        setFilteredData(newFilterCategory)
+  
+     
     }
   };
 
@@ -53,7 +67,7 @@ function SearchBar({ currentProducts,editProductId,editFormData,handleEditFormCh
           )}
         </div>
       </div>
-
+   <div className="search-result">
     {filteredData.length !== 0 ? 
      <form onSubmit={handleEditFormSubmit}>
            <table  class="table table-responsive table-sm">
@@ -68,23 +82,27 @@ function SearchBar({ currentProducts,editProductId,editFormData,handleEditFormCh
            </tr>
            </thead>
            <tbody>
-           { filteredData.map((currentProduct, key) =>
+            
+           {currentProducts ? filteredData.map((currentProduct, key) =>
           <Fragment>
             {editProductId ===currentProduct.id ? <EditableRow  key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
             <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
            </Fragment>
-            )}
+            ):null}
+
+       {categories ? filteredData.map((category, key) =>
+           <Fragment>
+           {editCatagorieId === category.id ? 
+           
+           <EditableRowCat  key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
+           <ReadOnlyRowCat category={category} key={key} deleteCategory={deleteCategory} handleEditClick={handleEditClick}/>}
+          </Fragment>
+            ):null}
          </tbody>
         </table>
-        <div className="container">
-        <Pagination
-        productsPerPage={productsPerPage}
-        totalProducts={filteredData.length}
-        paginate={paginate}
-      />
-    </div>
     </form>
- :null }
+    :null}
+       </div>
     </div>
   );
 }
