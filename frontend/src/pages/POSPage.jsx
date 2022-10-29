@@ -1,26 +1,19 @@
-import React,{useEffect,useRef,useState} from 'react'
-import { useReactToPrint } from 'react-to-print';
+import React,{useEffect,useState} from 'react'
 import MainLayout from '../layouts/MainLayout'
 import axios from 'axios';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {ComponentToPrint} from '../component/componentToPrint'
 import SideNavBarLayout from '../layouts/SideNavBarLayout'
-
+import CartModal from '../component/CartModal';
+import Rating from '../component/Rating'
 function POSPage() {
 const[products,setProducts]=useState([])
 const[isLoading,setIsLoading]=useState(false) 
 const[cart,setCart]=useState([])
 const[totalAmount,setTotalAmount]=useState(0)
-const componentRef = useRef();
 
-const handleReactToPrint = useReactToPrint({
-  content: () => componentRef.current,
-});
 
-const handlePrint = () => {
-  handleReactToPrint();
-}
+
 
 const toastOptions = {
     autoClose: 400,
@@ -150,12 +143,14 @@ const decCart=async(product)=>{
 //  setProducts(products)
  }
 
+
+
   
     
   return (
     <MainLayout>
       <SideNavBarLayout />
-    
+      <CartModal  totalAmount={totalAmount}  removeProduct={removeProduct} decCart={decCart} cart={cart} addProductToCart={addProductToCart}/>
     <div className='row'>
     <div className="filters" class="text-center d-flex">
      <button class="btn btn-info m-3" onClick={()=>filterResult('Drinks')} >Drinks</button>
@@ -173,6 +168,7 @@ const decCart=async(product)=>{
                     <h4>{product.name}</h4>
                     <img src={product.image} className="img-fluid" alt={product.name} />
                     <p>${product.price}</p>
+                    <Rating  />
                     <button className='btn btn-primary mb-2' onClick={()=> addProductToCart(product)} ><i class="fa-solid fa-plus"></i>{""} Add To Cart</button>
                 </div>
 
@@ -181,64 +177,7 @@ const decCart=async(product)=>{
           </div>}
      
       </div>
-        <div className="col-lg-4">
-        <div style={{display: "none"}}>
-                <ComponentToPrint cart={cart} totalAmount={totalAmount} ref={componentRef}/>
-              </div> 
-        <div className='table-responsive bg-dark'>
-                <table className='table table-responsive table-dark table-hover'>
-                  <thead>
-                    <tr>
-                      <td>Name</td>
-                      <td>Price</td>
-                      <td>Qty</td>
-                      <td>Total</td>
-                      <td>Action</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    { cart ? cart.map((cartProduct, key) =>
-                       
-                      <tr key={key}>
-                      <td>{cartProduct.name}</td>
-                      <td>${cartProduct.price}</td>
-                      <td>
-                        <button className='btn btn-light btn-sm bg-dark text-white mx-2'onClick={()=>addProductToCart(cartProduct)} >+</button>
-                        <div className='d-inline'>  {cartProduct.quantity} </div>
-                        {cartProduct.quantity >1 ? 
-                        <button className='btn btn-light btn-sm bg-dark text-white mx-2' onClick={()=>decCart(cartProduct)}>-</button>
-                        :
-                        <button className='btn btn-light btn-sm bg-dark text-white mx-2 ' >-</button>
-                         }
-                      </td>
-                      <td>{cartProduct.total}</td>
-                      <td>
-                        <button className='btn btn-danger btn-sm' onClick={() => removeProduct(cartProduct)} >Remove</button>
-                      </td>
-
-                    </tr>)
-
-                    : 'No Item in Cart'}
-                  </tbody>
-                </table>
-                
-               <h5 className='px-2 text-white'>Tax =</h5>
-                <h5 className='px-2 text-white'>Discount =</h5>
-                <h3 className='px-2 text-white'>Total Amount = ${totalAmount}</h3>
-           
-                </div>
-                <div className='mt-3'>
-                { totalAmount !== 0 ? <div>
-                  <button className='btn btn-primary' onClick={handlePrint}>
-                    Pay Now
-                  </button>
-
-                </div> : 'Please add a product to the cart'
-
-                }
-              </div>
-
-        </div>
+   
        </div>
     
     </MainLayout>
