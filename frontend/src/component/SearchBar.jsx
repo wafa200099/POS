@@ -70,6 +70,7 @@ function SearchBar({ currentProducts,editProductId,editFormData,handleEditFormCh
      <form onSubmit={handleEditFormSubmit}>
            <table  class="table table-responsive table-sm">
            <thead >
+           {currentProducts?
            <tr>
              <th scope="col">Name</th>
              <th scope="col">Code</th>
@@ -77,7 +78,13 @@ function SearchBar({ currentProducts,editProductId,editFormData,handleEditFormCh
              <th scope="col">Category</th>
              <th scope="col">Image</th>
              <th scope="col">Action</th>
-           </tr>
+             </tr>
+             :
+             <tr>
+             <th scope="col">Name</th>
+             <th scope="col">Action</th>
+             </tr>}
+         
            </thead>
            <tbody>
             

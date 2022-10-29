@@ -108,6 +108,7 @@ function ProductCatagories() {
            <thead >
            <tr>
               <th scope="col">Name</th>
+              <th scope="col">Action</th>
            </tr>
            </thead>
            <tbody>

@@ -12,8 +12,6 @@ const[products,setProducts]=useState([])
 const[isLoading,setIsLoading]=useState(false) 
 const[cart,setCart]=useState([])
 const[totalAmount,setTotalAmount]=useState(0)
-
-
 const componentRef = useRef();
 
 const handleReactToPrint = useReactToPrint({
@@ -41,11 +39,11 @@ const fetchProducts = async() => {
     },[])
 
 
-
-
+   
     const addProductToCart = async(product) =>{
-        // check if the adding product exist
+        // check if the adding product exist -- inside the cart--
         let findProductInCart = await cart.find(i=>{
+          //i  is the product im adding
           return i.id === product.id
         });
     
@@ -57,7 +55,7 @@ const fetchProducts = async() => {
             if(cartItem.id === product.id){
               newItem = {
                 ...cartItem,
-                quantity: cartItem.quantity + 1,
+                quantity:cartItem.quantity + 1,
                 total: cartItem.price * (cartItem.quantity + 1)
               }
               newCart.push(newItem);
@@ -71,10 +69,12 @@ const fetchProducts = async() => {
     
         }else{
           let addingProduct = {
+            // we pass same product (name +price )plus new extintion like(qty and total) 
             ...product,
             quantity: 1,
-            total: product.price,
+            total: product.price,//as item added for the first time to the cart the price = total
           }
+
           setCart([...cart, addingProduct]);
           toast(`Added ${product.name} to cart`, toastOptions)
         }
@@ -99,6 +99,59 @@ const fetchProducts = async() => {
     },[cart])
 
 
+
+const decCart=async(product)=>{
+   // check if the adding product exist -- inside the cart--
+   let findProductInCart = await cart.find(i=>{
+    //i  is the product im adding
+    return i.id === product.id
+  });
+
+  if(findProductInCart){
+    let newCart = [];
+    let newItem;
+
+    cart.forEach(cartItem => {
+      if(cartItem.id === product.id){
+      
+        newItem = {
+          ...cartItem,
+          quantity:cartItem.quantity - 1,
+          total: cartItem.price * (cartItem.quantity - 1)
+        }
+       
+        newCart.push(newItem);
+      }else{
+        newCart.push(cartItem);
+      }
+    });
+
+    setCart(newCart);
+    toast(`Added ${newItem.name} to cart`,toastOptions)
+
+  }else{
+    let addingProduct = {
+      // we pass same product (name +price )plus new extintion like(qty and total) 
+      ...product,
+      quantity: 1,
+      total: product.price,//as item added for the first time to the cart the price = total
+    }
+
+    setCart([...cart, addingProduct]);
+    toast(`Added ${product.name} to cart`, toastOptions)
+  }
+
+
+}
+
+// const filterDrinks=(products)=>{
+//   filterDrinks
+
+
+// }
+// onClick={filterDrinks}
+
+  
     
   return (
     <MainLayout>
@@ -106,13 +159,14 @@ const fetchProducts = async() => {
     
     <div className='row'>
     <div className="filters" class="text-center d-flex">
-     <button class="btn btn-info m-3 ">Drinks</button>
+     <button class="btn btn-info m-3" >Drinks</button>
      <button class="btn btn-info m-3">Fruits</button>
      <button class="btn btn-info m-3">Vegitabels</button>
      <button class="btn btn-info m-3">Bakary</button>
     </div>
       <div className='col-lg-8'>
-        {isLoading ? 'Loading' : <div className='row'>
+        {isLoading ? 'Loading' : 
+        <div className='row'>
             {products.map((product, key) =>
               <div key={key} className='col-lg-4 mb-4'>
                 <div className='pos-item px-3 text-center border' >
@@ -147,11 +201,15 @@ const fetchProducts = async() => {
                        
                       <tr key={key}>
                       <td>{cartProduct.name}</td>
-                      <td>{cartProduct.price}</td>
+                      <td>${cartProduct.price}</td>
                       <td>
-                        <button>+</button>
-                        {cartProduct.quantity}
-                        <button>-</button>
+                        <button className='btn btn-light btn-sm'onClick={()=>addProductToCart(cartProduct)} >+</button>
+                        <div className='d-inline'>  {cartProduct.quantity} </div>
+                        {cartProduct.quantity >1 ? 
+                        <button className='btn btn-light btn-sm' onClick={()=>decCart(cartProduct)}>-</button>
+                        :
+                        <button className='btn btn-light btn-sm' >-</button>
+                         }
                       </td>
                       <td>{cartProduct.total}</td>
                       <td>

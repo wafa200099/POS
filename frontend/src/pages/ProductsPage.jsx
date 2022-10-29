@@ -13,22 +13,14 @@ import SideNavBarLayout from '../layouts/SideNavBarLayout'
 import Pagination from '../component/Pagination'
 
 function ProductsPage() {
-  const[categories,setCatagories]=useState([])
-  const fetchCatagories = async() => {
-    const result = await axios.get('category');
-    setCatagories(await result.data);
-  }
-
-    useEffect(() => {
-        fetchCatagories()
-    },[])
   const[products,setProducts]=useState([])
+  const[categories,setCatagories]=useState([])
   const[editProductId,setEditProductId]=useState(null)
   const [editFormData, setEditFormData] = useState({
     name: "",
     code: "",
     price:"",
-    category:[],
+    category:"",
     image: "",
   });
 
@@ -45,6 +37,16 @@ function ProductsPage() {
     useEffect(() => {
         fetchProducts()
     },[])
+
+
+    const fetchCatagories = async() => {
+      const result = await axios.get('category');
+      setCatagories(await result.data);
+    }
+  
+      useEffect(() => {
+          fetchCatagories()
+      },[])
 
     const  deleteProduct=async(productId)=>{
       const newProducts=[...products]
@@ -98,8 +100,6 @@ function ProductsPage() {
 
            
       };
-console.log( editedProduct);
-      
       const newProducts = [...products];
        // index of row we are editing now
       const index = products.findIndex((product) => product.id === editProductId);
@@ -126,7 +126,7 @@ console.log( editedProduct);
     <MainLayout>
       <SideNavBarLayout />
        <SearchBar currentProducts={currentProducts} deleteProduct={deleteProduct} editProductId={editProductId} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} handleEditClick={handleEditClick} handleEditFormSubmit={handleEditFormSubmit} / >
-       <ModalDialog products={products} setProducts={setProducts} />
+       <ModalDialog  categories={categories} products={products} setProducts={setProducts} />
         <form onSubmit={handleEditFormSubmit}>
            <table  class="table table-responsive table-sm">
            <thead >

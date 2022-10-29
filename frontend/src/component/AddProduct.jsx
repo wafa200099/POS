@@ -3,8 +3,8 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
- const AddProduct = ({products,setProducts}) => {
+const AddProduct = ({categories,products,setProducts}) => {
+  console.log(categories);
   const toastOptions = {
     autoClose: 400,
     pauseOnHover: true,
@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
         id:Date.now() + Math.random(),
         name: "",
         code: "", 
+        category:"",
         price: "",
         image:" "
       }}
@@ -35,12 +36,25 @@ import 'react-toastify/dist/ReactToastify.css';
       >
         <Form >
                <div><label htmlFor="name">Name</label></div>
-               <div ><Field  className=' form-control bg-light rounded-3 border-1  border-primary' id="name" name="name" type="text"/></div>
-               <div><label htmlFor="price">price</label></div>
+               <div ><Field className=' form-control bg-light rounded-3 border-1  border-primary' id="name" name="name" type="text"/></div>
+               <div><label htmlFor="price">Price</label></div>
                <div><Field className='form-control bg-light rounded-3 border-1  border-primary' id="price" name="price" type="number"/></div>
-               <div><label htmlFor="code">code</label></div>
+
+               <div><label htmlFor="category">Category</label></div>
+               <div>
+
+                <Field   as="select" className='form-control bg-light rounded-3 border-1  border-primary' id="category" name="category">
+                   {categories && categories.map((category)=>{
+                     return (
+                     <option value={category.name}>{category.name}</option>
+                          );
+                       })}
+                </Field>
+                </div>
+
+               <div><label htmlFor="code">Code</label></div>
                <div><Field className=' form-control bg-light rounded-3 border-1  border-primary' id="code" name="code" type="text"/></div>
-               <div><label htmlFor="image">image</label></div>
+               <div><label htmlFor="image">Image</label></div>
                <div><Field className='form-control bg-light rounded-3 border-1  border-primary' id="image" name="image" type="text"/></div>
               <input type="submit" className=" btn btn-primary mt-2"/>
         </Form>
