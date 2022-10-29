@@ -101,9 +101,7 @@ const fetchProducts = async() => {
 
 
 const decCart=async(product)=>{
-   // check if the adding product exist -- inside the cart--
    let findProductInCart = await cart.find(i=>{
-    //i  is the product im adding
     return i.id === product.id
   });
 
@@ -128,15 +126,12 @@ const decCart=async(product)=>{
 
     setCart(newCart);
     toast(`Added ${newItem.name} to cart`,toastOptions)
-
   }else{
     let addingProduct = {
-      // we pass same product (name +price )plus new extintion like(qty and total) 
       ...product,
       quantity: 1,
-      total: product.price,//as item added for the first time to the cart the price = total
+      total: product.price,
     }
-
     setCart([...cart, addingProduct]);
     toast(`Added ${product.name} to cart`, toastOptions)
   }
@@ -144,12 +139,16 @@ const decCart=async(product)=>{
 
 }
 
-// const filterDrinks=(products)=>{
-//   filterDrinks
+ const filterResult=(catItem)=>{
+ const result=products.filter((currdata)=>{
+  return currdata.category ===catItem
+ }
+ )
 
+ setProducts(result)
 
-// }
-// onClick={filterDrinks}
+//  setProducts(products)
+ }
 
   
     
@@ -159,21 +158,22 @@ const decCart=async(product)=>{
     
     <div className='row'>
     <div className="filters" class="text-center d-flex">
-     <button class="btn btn-info m-3" >Drinks</button>
-     <button class="btn btn-info m-3">Fruits</button>
-     <button class="btn btn-info m-3">Vegitabels</button>
-     <button class="btn btn-info m-3">Bakary</button>
+     <button class="btn btn-info m-3" onClick={()=>filterResult('Drinks')} >Drinks</button>
+     <button class="btn btn-info m-3" onClick={()=>filterResult('Fruits')}>Fruits</button>
+     <button class="btn btn-info m-3" onClick={()=>filterResult('Vegitabels')}>Vegitabels</button>
+     <button class="btn btn-info m-3" onClick={()=>filterResult('Bakary')}>Bakary</button>
+     <button class="btn btn-info m-3" onClick={()=>setProducts(products)}>ALL</button>
     </div>
       <div className='col-lg-8'>
         {isLoading ? 'Loading' : 
         <div className='row'>
             {products.map((product, key) =>
-              <div key={key} className='col-lg-4 mb-4'>
-                <div className='pos-item px-3 text-center border' >
-                    <p>{product.name}</p>
+              <div key={key} className='col-lg-3 mb-4'>
+                <div className='pos-item  text-center border' >
+                    <h4>{product.name}</h4>
                     <img src={product.image} className="img-fluid" alt={product.name} />
                     <p>${product.price}</p>
-                    <button className='btn btn-primary mb-2' onClick={()=> addProductToCart(product)} ><i class="fa-solid fa-plus"></i></button>
+                    <button className='btn btn-primary mb-2' onClick={()=> addProductToCart(product)} ><i class="fa-solid fa-plus"></i>{""} Add To Cart</button>
                 </div>
 
               </div>
@@ -203,12 +203,12 @@ const decCart=async(product)=>{
                       <td>{cartProduct.name}</td>
                       <td>${cartProduct.price}</td>
                       <td>
-                        <button className='btn btn-light btn-sm'onClick={()=>addProductToCart(cartProduct)} >+</button>
+                        <button className='btn btn-light btn-sm bg-dark text-white mx-2'onClick={()=>addProductToCart(cartProduct)} >+</button>
                         <div className='d-inline'>  {cartProduct.quantity} </div>
                         {cartProduct.quantity >1 ? 
-                        <button className='btn btn-light btn-sm' onClick={()=>decCart(cartProduct)}>-</button>
+                        <button className='btn btn-light btn-sm bg-dark text-white mx-2' onClick={()=>decCart(cartProduct)}>-</button>
                         :
-                        <button className='btn btn-light btn-sm' >-</button>
+                        <button className='btn btn-light btn-sm bg-dark text-white mx-2 ' >-</button>
                          }
                       </td>
                       <td>{cartProduct.total}</td>
@@ -222,7 +222,10 @@ const decCart=async(product)=>{
                   </tbody>
                 </table>
                 
-                <h2 className='px-2 text-white'>Total Amount: ${totalAmount}</h2>
+               <h5 className='px-2 text-white'>Tax =</h5>
+                <h5 className='px-2 text-white'>Discount =</h5>
+                <h3 className='px-2 text-white'>Total Amount = ${totalAmount}</h3>
+           
                 </div>
                 <div className='mt-3'>
                 { totalAmount !== 0 ? <div>

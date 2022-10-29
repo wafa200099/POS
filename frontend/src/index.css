@@ -18,16 +18,12 @@ code {
 }
 
 .pos-item:hover{
-  background: rgb(168, 198, 225);
+  background: rgb(55, 125, 186);
   color: white;
 }
 
 .pos-item img{
   width: 100%;
-  max-height: 100px;
-  object-fit: cover;
+   height: 200px;
+  object-fit: contain;
 }
-/* .table{
-  width:100%
-} */
-
