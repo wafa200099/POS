@@ -2,10 +2,11 @@ import React,{useState,useRef} from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import {ComponentToPrint} from './componentToPrint'
 import { useReactToPrint } from 'react-to-print';
+import { AiOutlineWarning } from "react-icons/ai";
 function CartModal({decCart,removeProduct,totalAmount,cart,addProductToCart}) {
     const [showModal, setShowModal] = useState(false);
-    const [taxValue, setTaxValue] = useState('');
-    const [discountValue, setDiscountValue] = useState('');
+    const [taxValue, setTaxValue] = useState(0);
+    const [discountValue, setDiscountValue] = useState(0);
     const toggleShowModal = () => {
           setShowModal(!showModal);
         
@@ -20,16 +21,19 @@ function CartModal({decCart,removeProduct,totalAmount,cart,addProductToCart}) {
         handleReactToPrint();
       }
 
-
-      // let TaxPrice =totalAmount*{taxValue};
-      // let  DiscountPrice  =totalAmount*{discountValue};
-      // totalAmount=TaxPrice+DiscountPrice
+  
+      // let TaxPrice =totalAmount* taxValue;
+      // let  DiscountPrice  =totalAmount* discountValue;
+      let  totalAfter=totalAmount+(totalAmount*taxValue)-(totalAmount* discountValue)
   return (
     <>
-  
-      <Button variant="primary" onClick={toggleShowModal} className="mb-4">
-        <span><i class="fa fa-shopping-cart"></i> {cart.length}</span>    
+  <div className='d-flex justify-content-end mt-3 '> 
+
+  <Button variant="primary" onClick={toggleShowModal} className="mb-1 px-3 py-2   ">
+        <span ><i class="fa fa-shopping-cart"></i> {cart.length}</span>    
       </Button> 
+  </div>
+     
       <Modal show={showModal}>
         <Modal.Header closeButton onClick={toggleShowModal}>
           <Modal.Title>Cart</Modal.Title>
@@ -37,9 +41,9 @@ function CartModal({decCart,removeProduct,totalAmount,cart,addProductToCart}) {
         <Modal.Body>
         <div className="col-lg-12">
         <div style={{display: "none"}}>
-                <ComponentToPrint cart={cart} totalAmount={totalAmount} ref={componentRef}/>
+                <ComponentToPrint cart={cart} totalAmount={totalAmount} ref={componentRef} totalAfter={totalAfter} />
               </div> 
-        <div className='table-responsive bg-dark'>
+        <div className='table-responsive'>
                 <table className='table table-responsive table-dark table-hover'>
                   <thead>
                     <tr>
@@ -74,17 +78,14 @@ function CartModal({decCart,removeProduct,totalAmount,cart,addProductToCart}) {
                     : 'No Item in Cart'}
                   </tbody>
                 </table>
-                <div>
-                 <label htmlFor='tax' className='text-white'>Tax</label>
-
+            <div className='cart-summary text-black border'>
+              <label htmlFor='tax' >Added Tax</label>
               <input type="number" id="tax" name="tax"  className='float-left input-group w-25' value={taxValue} onChange={(event) => setTaxValue(event.target.value)}/>
-                 <label htmlFor='discount' className='text-white'>Discount</label>
+              <label htmlFor='discount' >Added Discount</label>
               <input type="number" id="discount" name="discount" className='float-left input-group w-25' value={discountValue} onChange={(event) => setDiscountValue(event.target.value)} />
-               </div>
-                {/* <h5 className='px-2 text-white'>TaxPrice=${TaxPrice}</h5>
-                <h5 className='px-2 text-white'>DiscountPrice=${DiscountPrice}</h5> */}
-                <h3 className='px-2 text-white'>Total Amount = ${totalAmount}</h3>
-           
+              <h5 className='mt-3'>Total Amount = ${totalAmount}</h5>
+              <h5 className='mt-3'>Total After Tax and Discount   = ${totalAfter}</h5>
+            </div>
                 </div>
                 <div className='mt-3'>
                 { totalAmount !== 0 ? <div>
@@ -92,8 +93,7 @@ function CartModal({decCart,removeProduct,totalAmount,cart,addProductToCart}) {
                     Pay Now
                   </button>
 
-                </div> : 'Please add a product to the cart'
-
+                </div> : <h4 className='text-danger'><AiOutlineWarning className='mx-2 mb-2'/>Please add Product to the cart</h4>
                 }
               </div>
 

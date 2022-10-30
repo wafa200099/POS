@@ -15,6 +15,8 @@ import Pagination from '../component/Pagination'
 function ProductsPage() {
   const[products,setProducts]=useState([])
   const[categories,setCatagories]=useState([])
+  const [search, setSearch] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const[editProductId,setEditProductId]=useState(null)
   const [editFormData, setEditFormData] = useState({
     name: "",
@@ -115,6 +117,16 @@ function ProductsPage() {
       setEditProductId(null);
 
     };
+
+    useEffect(() => {
+      setFilteredProducts(
+        products.filter((product) =>
+          product.name.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    }, [search, products]);
+
+
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage ,setProductsPerPage] = useState(10);
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -125,7 +137,22 @@ function ProductsPage() {
 
     <MainLayout>
       <SideNavBarLayout />
-       <SearchBar currentProducts={currentProducts} deleteProduct={deleteProduct} editProductId={editProductId} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} handleEditClick={handleEditClick} handleEditFormSubmit={handleEditFormSubmit} / >
+       {/* <SearchBar currentProducts={currentProducts} deleteProduct={deleteProduct} editProductId={editProductId} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} handleEditClick={handleEditClick} handleEditFormSubmit={handleEditFormSubmit} / > */}
+       <div className="input-group mb-4 mt-3">
+      <div className="form-outline">
+      <input
+        className='form-control'
+        id="form1"
+        type="search"
+        placeholder="Search Product Name"
+        onChange={(e) => setSearch(e.target.value)}
+      />
+  </div>
+  <button type="button" className="btn btn-primary btn-sm h-70">
+    <i class="fas fa-search"></i>
+  </button>
+   </div>
+      
        <ModalDialog  categories={categories} products={products} setProducts={setProducts} />
         <form onSubmit={handleEditFormSubmit}>
            <table  class="table table-responsive table-sm">
@@ -140,7 +167,14 @@ function ProductsPage() {
            </tr>
            </thead>
            <tbody>
-           { currentProducts.map((currentProduct, key) =>
+           {currentProducts.map((currentProduct, key) =>
+           <Fragment>
+            {editProductId ===currentProduct.id ? <EditableRow categories={categories} key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
+            <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
+           </Fragment>
+           )}
+           
+          {filteredProducts.map((currentProduct, key) =>
            <Fragment>
             {editProductId ===currentProduct.id ? <EditableRow categories={categories} key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
             <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}

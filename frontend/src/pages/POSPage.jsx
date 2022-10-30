@@ -11,10 +11,10 @@ const[products,setProducts]=useState([])
 const[isLoading,setIsLoading]=useState(false) 
 const[cart,setCart]=useState([])
 const[totalAmount,setTotalAmount]=useState(0)
-
-
-
-
+const [search, setSearch] = useState("");
+const [filteredProducts, setFilteredProducts] = useState([]);
+// const [filteredCat, setFilteredCat] = useState([]);
+// const [data, setData] = useState(products);
 const toastOptions = {
     autoClose: 400,
     pauseOnHover: true,
@@ -30,6 +30,7 @@ const fetchProducts = async() => {
     useEffect(() => {
         fetchProducts()
     },[])
+
 
 
    
@@ -133,15 +134,21 @@ const decCart=async(product)=>{
 }
 
  const filterResult=(catItem)=>{
- const result=products.filter((currdata)=>{
-  return currdata.category ===catItem
- }
+ const result=products.filter((currdata)=>{ 
+   return currdata.category === catItem}
  )
-
- setProducts(result)
-
-//  setProducts(products)
+  setProducts(result) 
+  
+  // setProducts(products)
  }
+
+ useEffect(() => {
+  setFilteredProducts(
+    products.filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase())
+    )
+  );
+}, [search, products]);
 
 
 
@@ -151,20 +158,39 @@ const decCart=async(product)=>{
     <MainLayout>
       <SideNavBarLayout />
       <CartModal  totalAmount={totalAmount}  removeProduct={removeProduct} decCart={decCart} cart={cart} addProductToCart={addProductToCart}/>
-    <div className='row'>
-    <div className="filters" class="text-center d-flex">
-     <button class="btn btn-info m-3" onClick={()=>filterResult('Drinks')} >Drinks</button>
-     <button class="btn btn-info m-3" onClick={()=>filterResult('Fruits')}>Fruits</button>
-     <button class="btn btn-info m-3" onClick={()=>filterResult('Vegitabels')}>Vegitabels</button>
-     <button class="btn btn-info m-3" onClick={()=>filterResult('Bakary')}>Bakary</button>
-     <button class="btn btn-info m-3" onClick={()=>setProducts(products)}>ALL</button>
+     <div className="input-group">
+     <div className="form-outline">
+      <input
+        className='form-control'
+        id="form1"
+        type="search"
+        placeholder="Search Product Name"
+        onChange={(e) => setSearch(e.target.value)}
+      />
+  </div>
+  <button type="button" className="btn btn-primary btn-sm h-70">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+
+    <div className='d-flex '>
+
+    <div className="d-inline-block" >
+    <div className=' col-lg-5 '> 
+     <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>filterResult('Drinks')}>Drinks</button>
+     <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>filterResult('Fruits')}>Fruits</button>
+     <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>filterResult('Vegitabels')}>Vegitabels</button>
+     <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>filterResult('Bakery')}>Bakery</button>
+     <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>setProducts(products)}>ALL</button>
+     </div>
     </div>
-      <div className='col-lg-8'>
+      <div className='col-lg-8 d-inline-block'>
         {isLoading ? 'Loading' : 
         <div className='row'>
-            {products.map((product, key) =>
-              <div key={key} className='col-lg-3 mb-4'>
-                <div className='pos-item  text-center border' >
+ 
+                   {filteredProducts.map((product, key) =>
+              <div key={key} className='col-lg-3 mb-4 '>
+                <div className='pos-item  text-center border Larger shadow rounded' >
                     <h4>{product.name}</h4>
                     <img src={product.image} className="img-fluid" alt={product.name} />
                     <p>${product.price}</p>
@@ -174,6 +200,20 @@ const decCart=async(product)=>{
 
               </div>
             )}
+
+
+            {/* {data.map((product, key) =>
+              <div key={key} className='col-lg-3 mb-4 '>
+                <div className='pos-item  text-center border Larger shadow rounded' >
+                    <h4>{product.name}</h4>
+                    <img src={product.image} className="img-fluid" alt={product.name} />
+                    <p>${product.price}</p>
+                    <Rating  />
+                    <button className='btn btn-primary mb-2' onClick={()=> addProductToCart(product)} ><i class="fa-solid fa-plus"></i>{""} Add To Cart</button>
+                </div>
+
+              </div>
+            )} */}
           </div>}
      
       </div>
