@@ -14,7 +14,7 @@ const[totalAmount,setTotalAmount]=useState(0)
 const [search, setSearch] = useState("");
 const [filteredProducts, setFilteredProducts] = useState([]);
 // const [filteredCat, setFilteredCat] = useState([]);
-// const [data, setData] = useState(products);
+const [data, setData] = useState(products);
 const toastOptions = {
     autoClose: 400,
     pauseOnHover: true,
@@ -137,7 +137,7 @@ const decCart=async(product)=>{
  const result=products.filter((currdata)=>{ 
    return currdata.category === catItem}
  )
-  setProducts(result) 
+  setData(result) 
   
   // setProducts(products)
  }
@@ -181,14 +181,14 @@ const decCart=async(product)=>{
      <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>filterResult('Fruits')}>Fruits</button>
      <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>filterResult('Vegitabels')}>Vegitabels</button>
      <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>filterResult('Bakery')}>Bakery</button>
-     <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>setProducts(products)}>ALL</button>
+     <button class="btn btn-warning text-black  m-3  w-100" onClick={()=>setData(products)}>ALL</button>
      </div>
     </div>
       <div className='col-lg-8 d-inline-block'>
         {isLoading ? 'Loading' : 
         <div className='row'>
  
-                   {filteredProducts.map((product, key) =>
+              {filteredProducts.map((product, key) =>
               <div key={key} className='col-lg-3 mb-4 '>
                 <div className='pos-item  text-center border Larger shadow rounded' >
                     <h4>{product.name}</h4>
@@ -202,7 +202,7 @@ const decCart=async(product)=>{
             )}
 
 
-            {/* {data.map((product, key) =>
+            {data.map((product, key) =>
               <div key={key} className='col-lg-3 mb-4 '>
                 <div className='pos-item  text-center border Larger shadow rounded' >
                     <h4>{product.name}</h4>
@@ -213,7 +213,7 @@ const decCart=async(product)=>{
                 </div>
 
               </div>
-            )} */}
+            )}
           </div>}
      
       </div>

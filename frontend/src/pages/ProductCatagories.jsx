@@ -13,6 +13,8 @@ import Pagination from '../component/Pagination'
 function ProductCatagories() {
   const[categories,setCategories]=useState([])
   const[editCatagorieId,setEditCatagorieId]=useState(null)
+  const [search, setSearch] = useState("");
+  const [filteredCategories,  setFilteredCategories] = useState([]);
   const [editFormData, setEditFormData] = useState({
     name: "",
 
@@ -91,17 +93,40 @@ function ProductCatagories() {
     };
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [categoryPerPage ,setCategoryPerPage] = useState(10);
+    const [categoryPerPage ,setCategoryPerPage] = useState(5);
     const indexOfLastCategory = currentPage * categoryPerPage;
     const indexOfFirstCategory = indexOfLastCategory - categoryPerPage;
-    const currentCategories = categories.slice(indexOfFirstCategory, indexOfLastCategory);
-
+    const currentCategories = filteredCategories.slice(indexOfFirstCategory, indexOfLastCategory);
     const paginate = pageNumber => setCurrentPage(pageNumber);
+
+
+    useEffect(() => {
+      setFilteredCategories(
+        categories.filter((category) =>
+          category.name.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    }, [search, categories]);
+
   return (
 
     <MainLayout>
       <SideNavBarLayout />
-       <SearchBar  categories={categories} deleteCategory={deleteCategory} editCatagorieId={editCatagorieId} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} handleEditClick={handleEditClick} handleEditFormSubmit={handleEditFormSubmit}/ >
+      <div className="input-group mb-4 mt-3">
+      <div className="form-outline">
+      <input
+        className='form-control'
+        id="form1"
+        type="search"
+        placeholder="Search Product Name"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+  </div>
+  <button type="button" className="btn btn-primary btn-sm h-70">
+    <i class="fas fa-search"></i>
+  </button>
+   </div>
        <ModalDialog categories={categories} setCatagories={categories} />
         <form onSubmit={handleEditFormSubmit}>
            <table  class="table table-responsive table-sm">

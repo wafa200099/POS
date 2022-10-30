@@ -119,19 +119,21 @@ function ProductsPage() {
     };
 
     useEffect(() => {
+      setProducts(products)
       setFilteredProducts(
         products.filter((product) =>
           product.name.toLowerCase().includes(search.toLowerCase())
         )
       );
+   
     }, [search, products]);
 
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage ,setProductsPerPage] = useState(10);
+    const [productsPerPage ,setProductsPerPage] = useState(5);
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
     const paginate = pageNumber => setCurrentPage(pageNumber);
   return (
 
@@ -145,6 +147,7 @@ function ProductsPage() {
         id="form1"
         type="search"
         placeholder="Search Product Name"
+        value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
   </div>
@@ -168,18 +171,11 @@ function ProductsPage() {
            </thead>
            <tbody>
            {currentProducts.map((currentProduct, key) =>
-           <Fragment>
-            {editProductId ===currentProduct.id ? <EditableRow categories={categories} key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
-            <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
-           </Fragment>
-           )}
-           
-          {filteredProducts.map((currentProduct, key) =>
-           <Fragment>
-            {editProductId ===currentProduct.id ? <EditableRow categories={categories} key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
-            <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
-           </Fragment>
-            )}
+            <Fragment>
+             {editProductId ===currentProduct.id ? <EditableRow categories={categories} key={key} editFormData={editFormData}  handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}   /> : 
+             <ReadOnlyRow  product={currentProduct}  key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick}/>}
+            </Fragment>
+             )}
          </tbody>
         </table>
         <div className="container">
@@ -188,7 +184,6 @@ function ProductsPage() {
         productsPerPage={productsPerPage}
         totalProducts={products.length}
         paginate={paginate}
-        // onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </div>
       </form>
