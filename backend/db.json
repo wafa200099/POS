@@ -103,13 +103,17 @@
       "category": "Vegitabels",
       "price": 8,
       "image": " https://images.theconversation.com/files/467055/original/file-20220605-59095-c54dkr.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=754&h=534&fit=crop&dpr=1"
+    },
+    {
+      "id": 1667230729255.0513,
+      "name": "Tomato",
+      "code": "402",
+      "price": 3,
+      "category": "Vegitabels",
+      "image": " https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tomato_je.jpg/1024px-Tomato_je.jpg"
     }
   ],
   "category": [
-    {
-      "id": 1,
-      "name": ""
-    },
     {
       "id": 4,
       "name": "Bakery"

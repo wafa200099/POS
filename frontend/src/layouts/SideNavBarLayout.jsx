@@ -7,10 +7,10 @@ function SideNavBarLayout() {
     <div>
     <body>
     <div class="icon-bar">
-    <Link to="/" className="navbar-brand"><i class="fa fa-home"></i></Link>
-    <Link to="/pos" className="navbar-brand"><i class="fa fa-shopping-cart"></i></Link>
-    <Link to="/productspage" className="navbar-brand"><i class="fa-solid fa-plus"></i></Link>
-    <Link to="/productcatagories" className="navbar-brand"><i class="fa fa-list-alt" aria-hidden="true"></i></Link>
+    <Link to="/" className="navbar-brand"><i class="fa fa-home"></i></Link><hr></hr>
+    <Link to="/pos" className="navbar-brand"><i class="fa fa-shopping-cart"></i></Link><hr></hr>
+    <Link to="/productspage" className="navbar-brand"><i class="fa-solid fa-plus"></i></Link><hr></hr>
+    <Link to="/productcatagories" className="navbar-brand"><i class="fa fa-list-alt" aria-hidden="true"></i></Link><hr></hr>
    </div>
     </body>
 </div>

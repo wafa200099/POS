@@ -44,6 +44,7 @@ const AddProduct = ({categories,products,setProducts}) => {
                <div>
 
                 <Field   as="select" className='form-control bg-light rounded-3 border-1  border-primary' id="category" name="category">
+                <option></option>
                    {categories && categories.map((category)=>{
                      return (
                      <option value={category.name}>{category.name}</option>

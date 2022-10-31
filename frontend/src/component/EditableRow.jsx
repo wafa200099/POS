@@ -11,9 +11,10 @@ function EditableRow({categories,editFormData,handleEditFormChange,handleCancelC
     <td>
 
     <select required="required" value={editFormData.category} name='category' onChange={handleEditFormChange}>  
+       <option></option>
     {categories && categories.map((category)=>{
     return (
-    
+       
         <option>{category.name}</option>
     );
     })}
