@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../layouts/MainLayout.css'
+import {BsCart4} from 'react-icons/bs'
 function MainLayout({ children }) {
   return (
     <div>
       <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div className='ml-2 w-50 m-3'> 
-          <Link to="/" className="navbar-brand  w-50 h1">HOME</Link></div>
+          <Link to="/" className="navbar-brand  w-50 h1"><BsCart4 className=' mb-2'/>Groco</Link></div>
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
               <li class="nav-item px-5">
@@ -19,7 +19,7 @@ function MainLayout({ children }) {
                 <Link to="/productspage" className="navbar-brand h2">Products</Link>
               </li>
               <li class="nav-item  px-5">
-                <Link to="/productcatagories" className="navbar-brand h2">Product Catagories</Link>
+                <Link to="/productcatagories" className="navbar-brand h2">Catagories</Link>
               </li>
             </ul>
           </div>

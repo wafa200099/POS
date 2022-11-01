@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
       <Formik
       initialValues={{
         id:Date.now() + Math.random(),
-        name: ""
+        name:""
  
       }}
       onSubmit={async (values) => {
@@ -26,7 +26,7 @@ import 'react-toastify/dist/ReactToastify.css';
       
           categories.push(values)
           setCategories([...categories])
-          toast(` ${values.name} added successfully`,toastOptions)
+          toast(`${values.name} added successfully`,toastOptions)
       }
     }
       >

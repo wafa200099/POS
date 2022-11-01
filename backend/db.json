@@ -35,8 +35,8 @@
     {
       "id": 1667055023119.529,
       "name": "Fanta",
-      "code": "201",
-      "price": 1,
+      "code": "208",
+      "price": "3",
       "category": "Drinks",
       "image": " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg_nmFuf4TD8ohyU3g-nk1HCHyv1duvKF7-9ZCGLcRYpNrz5kFY4j4j65IBzuaahuO4kI&usqp=CAU"
     },
@@ -115,10 +115,6 @@
   ],
   "category": [
     {
-      "id": 4,
-      "name": "Bakery"
-    },
-    {
       "id": 1666972119294.7422,
       "name": "Drinks"
     },
@@ -129,6 +125,10 @@
     {
       "id": 1666972145932.6948,
       "name": "Vegitabels"
+    },
+    {
+      "id": 1667315266824.2502,
+      "name": "Bakery"
     }
   ]
 }

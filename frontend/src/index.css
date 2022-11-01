@@ -17,13 +17,27 @@ code {
   font-weight: bold;
 }
 
-.pos-item:hover{
-  background: rgb(55, 125, 186);
+/* .pos-item:hover{
+  background: rgb(170, 170, 222);
   color: white;
-}
+} */
 
 .pos-item img{
   width: 100%;
    height: 200px;
   object-fit: contain;
+}
+
+         
+.filter button {
+  background-image: linear-gradient(to right, #7474BF 0%, #348AC7  51%, #7474BF  100%);
+ color: #fff;
+font-weight: 700;
+}
+
+.filter .btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: rgb(62, 59, 59);
+  text-decoration: none;
+
 }

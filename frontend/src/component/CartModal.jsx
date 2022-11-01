@@ -22,12 +22,10 @@ function CartModal({ decCart, removeProduct, totalAmount, cart, addProductToCart
   return (
     <>
       <div className='d-flex justify-content-end mt-3 '>
-
         <Button variant="primary" onClick={toggleShowModal} className="mb-1 px-3 py-2   ">
-          <span ><i class="fa fa-shopping-cart"></i> {cart.length}</span>
+          <span className='p-2'><i className="fa fa-shopping-cart p-2"></i>{cart.length}</span>
         </Button>
       </div>
-
       <Modal show={showModal}>
         <Modal.Header closeButton onClick={toggleShowModal}>
           <Modal.Title className='text-center'>Cart</Modal.Title>
@@ -66,24 +64,27 @@ function CartModal({ decCart, removeProduct, totalAmount, cart, addProductToCart
                       <td>
                         <button className='btn btn-danger btn-sm' onClick={() => removeProduct(cartProduct)} >Remove</button>
                       </td>
-
                     </tr>)
 
                     : 'No Item in Cart'}
                 </tbody>
               </table>
-              <div className='cart-summary text-black'>
-                <table className='table border'>
-                  <thead>
-                    <th>Added Tax</th>
-                    <th>Added Discount</th>
+              <div className='cart-summary text-black mt-4 '>
+                <table className='table border table-striped  '>
+                  <thead className='mt-4'>
+                    <tr>
+                      <th>Added Tax</th>
+                      <th>Added Discount</th>
+                    </tr>
                   </thead>
                   <tbody>
-                    <td> <input type="number" name="tax" className='w-25 border' value={taxValue} onChange={(event) => setTaxValue(event.target.value)} /></td>
-                    <td><input type="number" name="discount" className=' w-25 border' value={discountValue} onChange={(event) => setDiscountValue(event.target.value)} /></td>
+                    <tr>
+                      <td><input type="number" name="tax" className='w-25 border ' value={taxValue} onChange={(event) => setTaxValue(event.target.value)} /></td>
+                      <td><input type="number" name="discount" className=' w-25 border' value={discountValue} onChange={(event) => setDiscountValue(event.target.value)} /></td>
+                    </tr>
                   </tbody>
-                  <h5 className='mt-3'>Total Amount = ${totalAmount}</h5>
-                  <h5 className='mt-2'>Total After Tax and Discount= ${totalAfter}</h5>
+                  <p className='mt-3'>Total Amount = ${totalAmount}</p>
+                  <p className='mt-2'>Total After Tax and Discount= ${totalAfter}</p>
                 </table>
               </div>
             </div>
@@ -92,19 +93,15 @@ function CartModal({ decCart, removeProduct, totalAmount, cart, addProductToCart
                 <button className='btn btn-primary' onClick={handlePrint}>
                   Pay Now
                 </button>
-
               </div> : <h4 className='text-danger'><AiOutlineWarning className='mx-2 mb-2' />Please add Product to the cart</h4>
               }
             </div>
-
           </div>
-
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={toggleShowModal}>
             Close
           </Button>
-
         </Modal.Footer>
       </Modal>
     </>

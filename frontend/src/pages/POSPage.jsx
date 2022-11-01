@@ -5,14 +5,15 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SideNavBarLayout from '../layouts/SideNavBarLayout'
 import CartModal from '../component/CartModal';
-import Rating from '../component/Rating'
+import { Spinner } from 'loading-animations-react';
 function POSPage() {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [cart, setCart] = useState([])
   const [totalAmount, setTotalAmount] = useState(0)
   const [search, setSearch] = useState("");
-  const [data, setData] = useState(products);
+  const [data, setData] = useState([]);
+  // const [filteredProducts, setFilteredProducts] = useState([]);
   const toastOptions = {
     autoClose: 400,
     pauseOnHover: true,
@@ -69,7 +70,8 @@ function POSPage() {
 
       setCart([...cart, addingProduct]);
       toast(`Added ${product.name} to cart`, toastOptions)
-    }}
+    }
+  }
 
   const removeProduct = async (product) => {
     const newCart = cart.filter(cartItem => cartItem.id !== product.id)
@@ -84,7 +86,7 @@ function POSPage() {
     })
     setTotalAmount(newTotalAmount)
   }, [cart])
-  
+
   const decCart = async (product) => {
     let findProductInCart = await cart.find(i => {
       return i.id === product.id
@@ -120,19 +122,21 @@ function POSPage() {
       setCart([...cart, addingProduct]);
       toast(`Added ${product.name} to cart`, toastOptions)
     }
-
-
   }
-
   const productList = useMemo(() => {
     if (!search) return data;
-
     return data.filter((product) =>
       product.name.toLowerCase().includes(search.toLowerCase())
     )
-
   }, [search, data])
 
+  // useEffect(() => {
+  //   setFilteredProducts(
+  //     products.filter((product) =>
+  //       product.name.toLowerCase().includes(search.toLowerCase())
+  //     )
+  //   );
+  // }, [search, products]);
 
   const filterResult = (catItem) => {
     const result = products.filter((currdata) => {
@@ -141,18 +145,14 @@ function POSPage() {
     )
     setData(result)
   }
-
-
-
-
   return (
     <MainLayout>
       <SideNavBarLayout />
       <CartModal totalAmount={totalAmount} removeProduct={removeProduct} decCart={decCart} cart={cart} addProductToCart={addProductToCart} />
-      <div className="input-group">
-        <div className="form-outline">
+      <div className="input-group mx-3 ">
+        <div className="form-outline ">
           <input
-            className='form-control'
+            className='form-control p-2 '
             id="form1"
             type="search"
             placeholder="Search Product Name"
@@ -164,19 +164,18 @@ function POSPage() {
           <i class="fas fa-search"></i>
         </button>
       </div>
-
       <div className='d-flex '>
-        <div className="d-inline-block" >
-          <div className=' col-lg-5 '>
-            <button class="btn btn-warning text-black  m-3  w-100" onClick={() => filterResult('Drinks')}>Drinks</button>
-            <button class="btn btn-warning text-black  m-3  w-100" onClick={() => filterResult('Fruits')}>Fruits</button>
-            <button class="btn btn-warning text-black  m-3  w-100" onClick={() => filterResult('Vegitabels')}>Vegitabels</button>
-            <button class="btn btn-warning text-black  m-3  w-100" onClick={() => filterResult('Bakery')}>Bakery</button>
-            <button class="btn btn-warning text-black  m-3  w-100" onClick={() => setData(products)}>ALL</button>
+        <div className=" filter d-inline-block " >
+          <div className=' col-lg-7 '>
+            <button class="btn  p-3 m-3  w-100" onClick={() => setData(products)}>ALL</button>
+            <button class="btn  p-3 m-3  w-100" onClick={() => filterResult('Drinks')}>Drinks</button>
+            <button class="btn  p-3 m-3  w-100" onClick={() => filterResult('Fruits')}>Fruits</button>
+            <button class="btn  p-3 m-3  w-100" onClick={() => filterResult('Vegitabels')}>Vegitabels</button>
+            <button class="btn  p-3 m-3  w-100" onClick={() => filterResult('Bakery')}>Bakery</button>
           </div>
         </div>
         <div className='col-lg-8 d-inline-block'>
-          {isLoading ? 'Loading' :
+          {isLoading ? <Spinner color1="blue" color2="#fff" textColor="rgba(0,0,0, 0.5)" /> :
             <div className='row'>
               {productList.map((product, key) =>
                 <div key={key} className='col-lg-3 mb-4 '>
@@ -184,16 +183,12 @@ function POSPage() {
                     <h4>{product.name}</h4>
                     <img src={product.image} className="img-fluid" alt={product.name} />
                     <p>${product.price}</p>
-                    <Rating />
                     <button className='btn btn-primary mb-2' onClick={() => addProductToCart(product)} ><i class="fa-solid fa-plus"></i>{""} Add To Cart</button>
                   </div>
-
                 </div>
               )}
             </div>}
-
         </div>
-
       </div>
 
     </MainLayout>

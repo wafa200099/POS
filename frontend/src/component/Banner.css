@@ -1,0 +1,28 @@
+.banner {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    display: flex;
+    justify-content: center;
+  }
+  .banner .content {
+    text-align: center;
+    width: 50rem;
+    margin-left: 277px;
+    margin-bottom: 50px;
+  }
+  .banner .content h3 {
+    font-size: 3rem;
+    color: black;
+  }
+  .banner .content span {
+    color: rgb(46, 128, 21);
+  }
+  .banner .content p {
+    padding: 2rem 0;
+    font-size: 1.7rem;
+    color: rgb(0, 39, 182);
+  }
+  .banner .content button:hover {
+    background: rgb(4, 32, 145);
+  }
+  

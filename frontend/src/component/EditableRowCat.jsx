@@ -1,5 +1,3 @@
-import React from 'react'
-
 function EditableRowCat({editFormData,handleEditFormChange,handleCancelClick,key}) {
   return (
   <tr key={key} >
@@ -9,5 +7,4 @@ function EditableRowCat({editFormData,handleEditFormChange,handleCancelClick,key
   </tr>
   )
 }
-
 export default EditableRowCat
