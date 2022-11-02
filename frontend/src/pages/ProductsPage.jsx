@@ -9,7 +9,7 @@ import ReadOnlyRow from '../component/ReadOnlyRow'
 import EditableRow from '../component/EditableRow'
 import SideNavBarLayout from '../layouts/SideNavBarLayout'
 import Pagination from '../component/Pagination'
-// import { Formik, Field, Form } from 'formik';
+
 
 function ProductsPage() {
   const [products, setProducts] = useState([])
@@ -137,9 +137,11 @@ function ProductsPage() {
   return (
 
     <MainLayout>
+      
       <SideNavBarLayout />
+      <div className='w-100'>
       <div className="input-group mb-4 mt-3">
-        <div className="form-outline">
+        <div className="form-outline" >
           <input
             className='form-control'
             id="form1"
@@ -156,15 +158,15 @@ function ProductsPage() {
 
       <ModalDialog categories={categories} products={products} setProducts={setProducts}  />
       <form onSubmit={handleEditFormSubmit}>
-        <table class="table table-responsive table-sm">
+        <table class="table table-responsive table-sm border shadow bg-light">
           <thead >
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Code</th>
-              <th scope="col">Price</th>
-              <th scope="col">Category</th>
-              <th scope="col">Image</th>
-              <th scope="col">Action</th>
+              <th scope="col" className='p-3 bg-secondary text-white'>Name</th>
+              <th scope="col" className='p-3 bg-secondary text-white'>Code</th>
+              <th scope="col" className='p-3 bg-secondary text-white'>Price</th>
+              <th scope="col" className='p-3 bg-secondary text-white'>Category</th>
+              <th scope="col" className='p-3 bg-secondary text-white'>Image</th>
+              <th scope="col" className='p-3 bg-secondary text-white'>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -185,7 +187,7 @@ function ProductsPage() {
           />
         </div>
       </form>
-
+      </div>
     </MainLayout>
   )
 }

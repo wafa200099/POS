@@ -9,33 +9,17 @@
   }
   .page-item {
     display: inline;
+   
   }
   .page-item:first-child .page-link {
     margin-left: 0;
     border-bottom-left-radius: 0.25rem;
     border-top-left-radius: 0.25rem;
+  
   }
   .page-item:last-child .page-link {
     border-bottom-right-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
-  }
-  .page-item.active .page-link,
-  .page-item.active .page-link:focus,
-  .page-item.active .page-link:hover {
-    z-index: 2;
-    color: #fff;
-    cursor: default;
-    background-color: #1710de;
-    border-color: #655cb8;
-  }
-  .page-item.disabled .page-link,
-  .page-item.disabled .page-link:focus,
-  .page-item.disabled .page-link:hover {
-    color: #418bc4;
-    pointer-events: none;
-    cursor: not-allowed;
-    background-color: #fff;
-    border-color: #ddd;
   }
   .page-link {
     position: relative;
@@ -43,14 +27,15 @@
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
     color: #1b31ef;
+    font-size: large;
+    margin: 4px;
     text-decoration: none;
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(4, 0, 225);
     cursor: pointer;
   }
-  .page-link:focus,
   .page-link:hover {
     color: #6e79b0;
     background-color: #eceeef;
-    border-color: #ddd;
+    border-color: rgb(221, 221, 221);
   }

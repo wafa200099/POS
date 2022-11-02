@@ -7,7 +7,7 @@
   .banner .content {
     text-align: center;
     width: 50rem;
-    margin-left: 277px;
+    margin-left: 390px;
     margin-bottom: 50px;
   }
   .banner .content h3 {
@@ -15,14 +15,19 @@
     color: black;
   }
   .banner .content span {
-    color: rgb(46, 128, 21);
+    color: rgb(31, 109, 14);
   }
   .banner .content p {
+    margin-bottom: 70px;
     padding: 2rem 0;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     color: rgb(0, 39, 182);
+    
   }
   .banner .content button:hover {
-    background: rgb(4, 32, 145);
+    border: none;
+    color: #fff;
+    background: rgb(161, 171, 212);
+
   }
   

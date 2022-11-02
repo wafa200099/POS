@@ -23,8 +23,8 @@ function POSPage() {
     const result = await axios.get('products');
     setProducts(await result.data);
     setData(await result.data)
-    setTimeout(setIsLoading(false),1000)
-   
+    setTimeout(setIsLoading(false), 1000)
+
   }
 
   useEffect(() => {
@@ -148,7 +148,6 @@ function POSPage() {
         <div className="form-outline ">
           <input
             className='form-control p-2 '
-            id="form1"
             type="search"
             placeholder="Search Product Name"
             onChange={(e) => setSearch(e.target.value)}
@@ -161,27 +160,26 @@ function POSPage() {
       </div>
       <div className='d-flex '>
         <div className=" filter d-inline-block " >
-          <div className=' col-lg-7 '>
-            <button class="btn  p-3 m-3  w-100" onClick={() => setData(products)}>ALL</button>
-            <button class="btn  p-3 m-3  w-100" onClick={() => filterResult('Drinks')}>Drinks</button>
-            <button class="btn  p-3 m-3  w-100" onClick={() => filterResult('Fruits')}>Fruits</button>
-            <button class="btn  p-3 m-3  w-100" onClick={() => filterResult('Vegitabels')}>Vegitabels</button>
-            <button class="btn  p-3 m-3  w-100" onClick={() => filterResult('Bakery')}>Bakery</button>
+          <div className=' col-lg-6 '>
+            <button className="btn  p-3 m-3  w-100" onClick={() => setData(products)}>ALL</button>
+            <button className="btn  p-3 m-3  w-100" onClick={() => filterResult('Drinks')}>Drinks</button>
+            <button className="btn  p-3 m-3  w-100" onClick={() => filterResult('Fruits')}>Fruits</button>
+            <button className="btn  p-3 m-3  w-100" onClick={() => filterResult('Vegitabels')}>Vegitabels</button>
+            <button className="btn  p-3 m-3  w-100" onClick={() => filterResult('Bakery')}>Bakery</button>
           </div>
         </div>
         <div className='col-lg-8 d-inline-block'>
-          {isLoading ? <Spinner color1="blue" color2="#fff" textColor="rgba(0,0,0, 0.5)" /> :
+          {isLoading ? <div className='Spinner'><Spinner color1="blue" color2="#fff" textColor="rgba(0,0,0, 0.5)" /></div> :
             <div className='row'>
-              {
-              productList.map((product, key) =>
-              <div key={key} className='col-lg-3 mb-4 '>
-                <div className='pos-item  text-center border Larger shadow rounded' >
-                  <h4>{product.name}</h4>
-                  <img src={product.image} className="img-fluid" alt={product.name} />
-                  <p>${product.price}</p>
-                  <button className='btn btn-primary mb-2' onClick={() => addProductToCart(product)} ><i class="fa-solid fa-plus"></i>{""} Add To Cart</button>
+              {productList.map((product, key) =>
+                <div key={key} className='col-lg-3 mb-4 '>
+                  <div className='pos-item  text-center border Larger shadow rounded' >
+                    <h4>{product.name}</h4>
+                    <img src={product.image} className="img-fluid" alt={product.name} />
+                    <p>${product.price}</p>
+                    <button className='btn btn-primary mb-2' onClick={() => addProductToCart(product)} ><i class="fa-solid fa-plus"></i>{""} Add To Cart</button>
+                  </div>
                 </div>
-              </div>
               )
               }
             </div>}

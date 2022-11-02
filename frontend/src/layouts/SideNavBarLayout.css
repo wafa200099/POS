@@ -3,7 +3,7 @@ body {
  left: 0;
 }
 .icon-bar {
-top: 70px;
+top: 77px;
 margin: 0;
 padding: 0;
 width: 70px;
@@ -12,6 +12,7 @@ position: absolute;
 height: 100%;
 overflow: auto;
 left: 0;
+
 }
 .icon-bar .navbar-brand {
   display: block;

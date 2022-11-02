@@ -93,13 +93,14 @@ function ProductCatagories() {
 
 
   useEffect(() => {
-  setFilteredCategories(categories)
-   if (search){
-    setFilteredCategories(
-      categories.filter((category) =>
-        category.name.toLowerCase().includes(search.toLowerCase())
-      )
-    );}
+    setFilteredCategories(categories)
+    if (search) {
+      setFilteredCategories(
+        categories.filter((category) =>
+          category.name.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    }
   }, [search, categories]);
 
   return (
@@ -121,13 +122,13 @@ function ProductCatagories() {
           <i class="fas fa-search"></i>
         </button>
       </div>
-      <ModalDialog categories={categories} setCategories={setCategories}  fetchCategories={fetchCategories}/>
+      <ModalDialog categories={categories} setCategories={setCategories} fetchCategories={fetchCategories} />
       <form onSubmit={handleEditFormSubmit}>
-        <table class="table table-responsive table-sm">
+        <table class="table table-responsive table-sm border w-50 shadow bg-light">
           <thead >
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Action</th>
+              <th scope="col" className='p-3 bg-secondary text-white'>Name</th>
+              <th scope="col" className='p-3 bg-secondary text-white'>Action</th>
             </tr>
           </thead>
           <tbody>

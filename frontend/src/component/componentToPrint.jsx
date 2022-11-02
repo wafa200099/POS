@@ -26,10 +26,10 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
                     : ''}
                   </tbody>
                 </table>
-                <h3 className='px-2'> Added Tax: ${taxValue}</h3>
-                <h3 className='px-2'>Discount : ${discountValue}</h3>
-                <h3 className='px-2'>Total Amount: ${totalAmount}</h3>
-                <h3 className='px-2'>Total Amount After Tax And Discount: ${totalAfter}</h3>
+                <p className='px-2'> Added Tax: ${taxValue}</p>
+                <p className='px-2'>Discount : ${discountValue}</p>
+                <p className='px-2'>Total Amount: ${totalAmount}</p>
+                <p className='px-2'>Total Amount After Tax And Discount: ${totalAfter}</p>
                
       </div>
     );
