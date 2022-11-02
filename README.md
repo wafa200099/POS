@@ -20,7 +20,7 @@ With these operational improvements, customers will tend to get better service a
 
 
 <h2>POS Pages </h2>
-<p>Home Page :The welcome page that contains an overview of the system and a general definition of it, in addition to its Features </p>
+<p>Home Page :The welcome page that contains an overview of the system and a general definition of it. </p>
 <p>Pos Page: A page  where you can view all of products figures in one place ,Also includes the Cart which is a piece of software that facilitates the purchase of a product ,search product ,and filter product by Catagory .</p>
 <p>Product Page: A page has a list of all products  stored  in the system Database , so you  can view/add/update/delete/search a product.</p>
 <p>Catagories Page :A page that has a list of all product categories in the system, so you can view/add/update/delete/search a product category.</p>
