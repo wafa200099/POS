@@ -55,11 +55,11 @@ With these operational improvements, customers will tend to get better service a
   <hr>
   
   <h2>Wireframe</h2>
-  POS page:
+
 ![image](https://user-images.githubusercontent.com/79041670/199538330-9794cf41-40a9-4b40-9c26-c95cf5b31c96.png)
-Categories page:
+
 ![image](https://user-images.githubusercontent.com/79041670/199538440-2975f96c-b631-476e-baa4-8200fa2c35e9.png)
-product page:
+
 ![image](https://user-images.githubusercontent.com/79041670/199538556-1cb79132-19a3-43a3-b64f-28d4be198908.png)
 
 
