@@ -41,7 +41,7 @@ With these operational improvements, customers will tend to get better service a
 <hr>
 
 <h2>POS Documentation </h2>
-<a href="https://www.notion.so/POS-Documentation-2d0947203bfa4279952095665e3abcf3">POS Documentation Link  </>a
+<a href="https://www.notion.so/POS-Documentation-2d0947203bfa4279952095665e3abcf3">POS Documentation Link</a>
 
 
 <h2>How to set up the project</h2>
