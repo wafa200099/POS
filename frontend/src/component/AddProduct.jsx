@@ -4,8 +4,6 @@ import { Formik, Field, Form } from 'formik';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const AddProduct = ({ categories, products, setProducts }) => {
-  console.log(categories);
-
   const toastOptions = {
     autoClose: 400,
     pauseOnHover: true,
@@ -28,7 +26,6 @@ const AddProduct = ({ categories, products, setProducts }) => {
           },
           body: JSON.stringify(values)
         })
-
         products.push(values)
         setProducts([...products])
         toast(` ${values.name}  added successfully`, toastOptions)

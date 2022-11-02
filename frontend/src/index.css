@@ -18,7 +18,7 @@ code {
 }
 
 /* .pos-item:hover{
-  background: rgb(170, 170, 222);
+  background: hsla(240, 3%, 81%, 0.66);
   color: white;
 } */
 
@@ -39,5 +39,14 @@ font-weight: 700;
   background-position: right center; /* change the direction of the change here */
   color: rgb(62, 59, 59);
   text-decoration: none;
+
+}
+
+td, 
+td >input{
+max-width: 90px;
+min-width: 90px;
+max-height: 40px;
+min-height: 30px;
 
 }

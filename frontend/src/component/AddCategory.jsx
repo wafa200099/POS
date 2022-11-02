@@ -3,11 +3,12 @@ import { Formik, Field, Form } from 'formik';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
- const AddCategory = ({categories,setCategories}) => {
+ const AddCategory = ({categories,setCategories,fetchCatagories}) => {
   const toastOptions = {
     autoClose: 400,
     pauseOnHover: true,
   }
+
     return(
       <Formik
       initialValues={{
@@ -23,10 +24,12 @@ import 'react-toastify/dist/ReactToastify.css';
             },
             body:JSON.stringify(values)
           })
-      
+          
           categories.push(values)
           setCategories([...categories])
           toast(`${values.name} added successfully`,toastOptions)
+     
+   
       }
     }
       >

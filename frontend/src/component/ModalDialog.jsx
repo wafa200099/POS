@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap'
 import AddCategory from './AddCategory';
 import AddProduct from './AddProduct';
 
-function ModalDialog({ products, setProducts, categories, setCategories }) {
+function ModalDialog({ products, setProducts, categories, setCategories ,fetchCatagories}) {
   const [showModal, setShowModal] = useState(false);
   const toggleShowModal = () => {
     setShowModal(!showModal);
@@ -29,7 +29,7 @@ function ModalDialog({ products, setProducts, categories, setCategories }) {
           {products ?
             <AddProduct categories={categories} products={products} setProducts={setProducts} />
             :
-            <AddCategory categories={categories} setCategories={setCategories} />
+            <AddCategory categories={categories} setCategories={setCategories} fetchCatagories={fetchCatagories} />
           }
         </Modal.Body>
         <Modal.Footer>

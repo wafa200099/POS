@@ -9,6 +9,7 @@ import ReadOnlyRowCat from '../component/ReadOnlyRowCat'
 import EditableRowCat from '../component/EditableRowCat'
 import SideNavBarLayout from '../layouts/SideNavBarLayout'
 import Pagination from '../component/Pagination'
+
 function ProductCatagories() {
   const [categories, setCategories] = useState([])
   const [editCatagorieId, setEditCatagorieId] = useState(null)
@@ -22,6 +23,7 @@ function ProductCatagories() {
     autoClose: 400,
     pauseOnHover: true,
   }
+
   const fetchCategories = async () => {
     const result = await axios.get('category');
     setCategories(await result.data);
@@ -29,6 +31,7 @@ function ProductCatagories() {
   useEffect(() => {
     fetchCategories()
   }, [])
+
   const deleteCategory = async (categoryId) => {
     const newCatagories = [...categories]
     const delelm = categories.findIndex((category) => category.id === categoryId);
@@ -75,7 +78,9 @@ function ProductCatagories() {
       },
       body: JSON.stringify(editedcategory)
     })
+
     setCategories(newCatagories);
+    fetchCategories()
     setEditCatagorieId(null);
   };
 
@@ -88,12 +93,13 @@ function ProductCatagories() {
 
 
   useEffect(() => {
-    setCategories(categories)
+  setFilteredCategories(categories)
+   if (search){
     setFilteredCategories(
       categories.filter((category) =>
         category.name.toLowerCase().includes(search.toLowerCase())
       )
-    );
+    );}
   }, [search, categories]);
 
   return (
@@ -115,7 +121,7 @@ function ProductCatagories() {
           <i class="fas fa-search"></i>
         </button>
       </div>
-      <ModalDialog categories={categories} setCatagories={categories} />
+      <ModalDialog categories={categories} setCategories={setCategories}  fetchCategories={fetchCategories}/>
       <form onSubmit={handleEditFormSubmit}>
         <table class="table table-responsive table-sm">
           <thead >

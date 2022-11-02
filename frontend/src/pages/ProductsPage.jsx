@@ -154,7 +154,7 @@ function ProductsPage() {
         </button>
       </div>
 
-      <ModalDialog categories={categories} products={products} setProducts={setProducts} />
+      <ModalDialog categories={categories} products={products} setProducts={setProducts}  />
       <form onSubmit={handleEditFormSubmit}>
         <table class="table table-responsive table-sm">
           <thead >

@@ -1,7 +1,7 @@
 import React from "react";
 
 export const ComponentToPrint = React.forwardRef((props, ref) => {
-    const {cart, totalAmount ,totalAfter} = props;
+    const {cart, totalAmount ,totalAfter ,discountValue , taxValue} = props;
     return (
       <div ref={ref} className="p-5">
           <table className='table'>
@@ -26,9 +26,11 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
                     : ''}
                   </tbody>
                 </table>
-                <h2 className='px-2'>Total Amount: ${totalAmount}</h2>
-                <h2 className='px-2'>Total Amount After Tax And Discount: ${totalAfter}</h2>
-         
+                <h3 className='px-2'> Added Tax: ${taxValue}</h3>
+                <h3 className='px-2'>Discount : ${discountValue}</h3>
+                <h3 className='px-2'>Total Amount: ${totalAmount}</h3>
+                <h3 className='px-2'>Total Amount After Tax And Discount: ${totalAfter}</h3>
+               
       </div>
     );
 });

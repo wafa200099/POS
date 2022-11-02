@@ -3,6 +3,7 @@ import { Modal, Button } from 'react-bootstrap'
 import { ComponentToPrint } from './componentToPrint'
 import { useReactToPrint } from 'react-to-print';
 import { AiOutlineWarning } from "react-icons/ai";
+import { MdDeleteOutline } from 'react-icons/md'
 function CartModal({ decCart, removeProduct, totalAmount, cart, addProductToCart }) {
   const [showModal, setShowModal] = useState(false);
   const [taxValue, setTaxValue] = useState(0);
@@ -33,15 +34,15 @@ function CartModal({ decCart, removeProduct, totalAmount, cart, addProductToCart
         <Modal.Body>
           <div className="col-lg-12">
             <div style={{ display: "none" }}>
-              <ComponentToPrint cart={cart} totalAmount={totalAmount} ref={componentRef} totalAfter={totalAfter} />
+              <ComponentToPrint cart={cart} totalAmount={totalAmount} ref={componentRef} totalAfter={totalAfter} discountValue={discountValue} taxValue={taxValue} />
             </div>
-            <div className='table-responsive'>
-              <table className='table table-responsive table-dark table-hover'>
+            <div>
+              <table className='table table-responsive table-secondary table-hover'>
                 <thead>
                   <tr>
                     <td>Name</td>
                     <td>Price</td>
-                    <td>Qty</td>
+                    <td>Quantity</td>
                     <td>Total</td>
                     <td>Action</td>
                   </tr>
@@ -52,17 +53,17 @@ function CartModal({ decCart, removeProduct, totalAmount, cart, addProductToCart
                       <td>{cartProduct.name}</td>
                       <td>${cartProduct.price}</td>
                       <td>
-                        <button className='btn btn-light btn-sm bg-dark text-white mx-2' onClick={() => addProductToCart(cartProduct)} >+</button>
+                        <button className='btn btn-light btn-sm bg-light text-black ' onClick={() => addProductToCart(cartProduct)} >+</button>
                         <div className='d-inline'>  {cartProduct.quantity} </div>
                         {cartProduct.quantity > 1 ?
-                          <button className='btn btn-light btn-sm bg-dark text-white mx-2' onClick={() => decCart(cartProduct)}>-</button>
+                          <button className='btn btn-light btn-sm bg-light text-black ' onClick={() => decCart(cartProduct)}>-</button>
                           :
-                          <button className='btn btn-light btn-sm bg-dark text-white mx-2 ' >-</button>
+                          <button className='btn btn-light btn-sm bg-light text-black  ' >-</button>
                         }
                       </td>
                       <td>{cartProduct.total}</td>
                       <td>
-                        <button className='btn btn-danger btn-sm' onClick={() => removeProduct(cartProduct)} >Remove</button>
+                        <button className='btn btn-danger btn-sm ' onClick={() => removeProduct(cartProduct)} ><MdDeleteOutline className='mb-1' /></button>
                       </td>
                     </tr>)
 
@@ -70,27 +71,29 @@ function CartModal({ decCart, removeProduct, totalAmount, cart, addProductToCart
                 </tbody>
               </table>
               <div className='cart-summary text-black mt-4 '>
-                <table className='table border table-striped  '>
-                  <thead className='mt-4'>
-                    <tr>
-                      <th>Added Tax</th>
-                      <th>Added Discount</th>
-                    </tr>
+                <table className='table border  '>
+                  <thead >
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><input type="number" name="tax" className='w-25 border ' value={taxValue} onChange={(event) => setTaxValue(event.target.value)} /></td>
+                    <tr className='border'>Added Tax
+                      <td><input type="number" name="tax" className='w-25 border' value={taxValue} onChange={(event) => setTaxValue(event.target.value)} /></td>
+                    </tr>
+                    <tr className='border'>Discount
                       <td><input type="number" name="discount" className=' w-25 border' value={discountValue} onChange={(event) => setDiscountValue(event.target.value)} /></td>
                     </tr>
+                    <tr className='border'> Total Amount
+                      <td className='mt-3'>${totalAmount}</td>
+                    </tr>
+                    <tr className='border'> Total After Tax and Discount
+                      <td className='mt-3'>${totalAfter}</td>
+                    </tr>
                   </tbody>
-                  <p className='mt-3'>Total Amount = ${totalAmount}</p>
-                  <p className='mt-2'>Total After Tax and Discount= ${totalAfter}</p>
                 </table>
               </div>
             </div>
             <div className='mt-3'>
               {totalAmount !== 0 ? <div>
-                <button className='btn btn-primary' onClick={handlePrint}>
+                <button className='btn btn-success' onClick={handlePrint}>
                   Pay Now
                 </button>
               </div> : <h4 className='text-danger'><AiOutlineWarning className='mx-2 mb-2' />Please add Product to the cart</h4>

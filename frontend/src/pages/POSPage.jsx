@@ -13,7 +13,6 @@ function POSPage() {
   const [totalAmount, setTotalAmount] = useState(0)
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
-  // const [filteredProducts, setFilteredProducts] = useState([]);
   const toastOptions = {
     autoClose: 400,
     pauseOnHover: true,
@@ -23,7 +22,9 @@ function POSPage() {
     setIsLoading(true);
     const result = await axios.get('products');
     setProducts(await result.data);
-    setIsLoading(false);
+    setData(await result.data)
+    setTimeout(setIsLoading(false),1000)
+   
   }
 
   useEffect(() => {
@@ -123,6 +124,7 @@ function POSPage() {
       toast(`Added ${product.name} to cart`, toastOptions)
     }
   }
+
   const productList = useMemo(() => {
     if (!search) return data;
     return data.filter((product) =>
@@ -130,13 +132,6 @@ function POSPage() {
     )
   }, [search, data])
 
-  // useEffect(() => {
-  //   setFilteredProducts(
-  //     products.filter((product) =>
-  //       product.name.toLowerCase().includes(search.toLowerCase())
-  //     )
-  //   );
-  // }, [search, products]);
 
   const filterResult = (catItem) => {
     const result = products.filter((currdata) => {
@@ -177,16 +172,18 @@ function POSPage() {
         <div className='col-lg-8 d-inline-block'>
           {isLoading ? <Spinner color1="blue" color2="#fff" textColor="rgba(0,0,0, 0.5)" /> :
             <div className='row'>
-              {productList.map((product, key) =>
-                <div key={key} className='col-lg-3 mb-4 '>
-                  <div className='pos-item  text-center border Larger shadow rounded' >
-                    <h4>{product.name}</h4>
-                    <img src={product.image} className="img-fluid" alt={product.name} />
-                    <p>${product.price}</p>
-                    <button className='btn btn-primary mb-2' onClick={() => addProductToCart(product)} ><i class="fa-solid fa-plus"></i>{""} Add To Cart</button>
-                  </div>
+              {
+              productList.map((product, key) =>
+              <div key={key} className='col-lg-3 mb-4 '>
+                <div className='pos-item  text-center border Larger shadow rounded' >
+                  <h4>{product.name}</h4>
+                  <img src={product.image} className="img-fluid" alt={product.name} />
+                  <p>${product.price}</p>
+                  <button className='btn btn-primary mb-2' onClick={() => addProductToCart(product)} ><i class="fa-solid fa-plus"></i>{""} Add To Cart</button>
                 </div>
-              )}
+              </div>
+              )
+              }
             </div>}
         </div>
       </div>
