@@ -38,11 +38,18 @@ With these operational improvements, customers will tend to get better service a
 <p><a href="https://formik.org/">Formik<a/></p> 
 
 
-<h2>Getting Started</h2>
-<ol>
-    <li>Clone the repo  by git clone "Repo-Link"</li>
-       <li>Install node modules by npm i</li>
-       <li>start the app by npm start</li>
+
+<h2>wireFrame </h2>
+
+
+
+
+<h2>How to set up the project</h2>
+<ol>   
+<li>Access to the project folder on the computer via Termaial or Git Bash</li>
+ <li>Clone this respository to your computer  by --git clone "Repo-Link"--</li>
+  <li>Excute  --npm install-- to download all necessary packages </li>
+  <li>Excute --npm start-- to start the projec</li>
 </ol>
     
 
