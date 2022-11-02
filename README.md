@@ -51,6 +51,7 @@ With these operational improvements, customers will tend to get better service a
   <li>Excute  --npm install-- to download all necessary packages </li>
   <li>Change directory to backend by --cd backend--</li>
   <li>Run --json-server --watch db.json --port 5000--</li>
+   <li>Change directory to frontend by --cd frontend--</li>
   <li>Excute --npm start-- to start the projec</li>
 </ol>
 
