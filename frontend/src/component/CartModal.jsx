@@ -4,6 +4,7 @@ import { ComponentToPrint } from './componentToPrint'
 import { useReactToPrint } from 'react-to-print';
 import { AiOutlineWarning } from "react-icons/ai";
 import { MdDeleteOutline } from 'react-icons/md'
+
 function CartModal({ decCart, removeProduct, totalAmount, cart, addProductToCart }) {
   const [showModal, setShowModal] = useState(false);
   const [taxValue, setTaxValue] = useState(0);

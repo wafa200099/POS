@@ -74,11 +74,13 @@ function POSPage() {
     }
   }
 
+
   const removeProduct = async (product) => {
     const newCart = cart.filter(cartItem => cartItem.id !== product.id)
     setCart(newCart)
     toast(`remove ${product.name} from cart`, toastOptions)
   }
+
   //evry time the item in the cart change were going to calculate total amount
   useEffect(() => {
     let newTotalAmount = 0;
@@ -87,6 +89,8 @@ function POSPage() {
     })
     setTotalAmount(newTotalAmount)
   }, [cart])
+
+
 
   const decCart = async (product) => {
     let findProductInCart = await cart.find(i => {

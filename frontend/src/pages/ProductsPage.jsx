@@ -1,7 +1,7 @@
 
 import MainLayout from '../layouts/MainLayout'
 import axios from 'axios'
-import React,{ useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import ModalDialog from '../component/ModalDialog'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -137,56 +137,56 @@ function ProductsPage() {
   return (
 
     <MainLayout>
-      
+
       <SideNavBarLayout />
       <div className='w-100'>
-      <div className="input-group mb-4 mt-3">
-        <div className="form-outline" >
-          <input
-            className='form-control'
-            id="form1"
-            type="search"
-            placeholder="Search Product Name"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+        <div className="input-group mb-4 mt-3">
+          <div className="form-outline" >
+            <input
+              className='form-control'
+              id="form1"
+              type="search"
+              placeholder="Search Product Name"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+          <button type="button" className="btn btn-primary btn-sm h-70">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
-        <button type="button" className="btn btn-primary btn-sm h-70">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
 
-      <ModalDialog categories={categories} products={products} setProducts={setProducts}  />
-      <form onSubmit={handleEditFormSubmit}>
-        <table class="table table-responsive table-sm border shadow bg-light">
-          <thead >
-            <tr>
-              <th scope="col" className='p-3 bg-secondary text-white'>Name</th>
-              <th scope="col" className='p-3 bg-secondary text-white'>Code</th>
-              <th scope="col" className='p-3 bg-secondary text-white'>Price</th>
-              <th scope="col" className='p-3 bg-secondary text-white'>Category</th>
-              <th scope="col" className='p-3 bg-secondary text-white'>Image</th>
-              <th scope="col" className='p-3 bg-secondary text-white'>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentProducts.map((currentProduct, key) =>
-              <Fragment>
-                {editProductId === currentProduct.id ? <EditableRow categories={categories} key={key} editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} /> :
-                  <ReadOnlyRow product={currentProduct} key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick} />}
-              </Fragment>
-            )}
-          </tbody>
-        </table>
-        <div className="container">
-          <Pagination
-            setProductsPerPage={setProductsPerPage}
-            productsPerPage={productsPerPage}
-            totalProducts={products.length}
-            paginate={paginate}
-          />
-        </div>
-      </form>
+        <ModalDialog categories={categories} products={products} setProducts={setProducts} />
+        <form onSubmit={handleEditFormSubmit}>
+          <table class="table table-responsive table-sm border shadow bg-light">
+            <thead >
+              <tr>
+                <th scope="col" className='p-3 bg-secondary text-white'>Name</th>
+                <th scope="col" className='p-3 bg-secondary text-white'>Code</th>
+                <th scope="col" className='p-3 bg-secondary text-white'>Price</th>
+                <th scope="col" className='p-3 bg-secondary text-white'>Category</th>
+                <th scope="col" className='p-3 bg-secondary text-white'>Image</th>
+                <th scope="col" className='p-3 bg-secondary text-white'>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentProducts.map((currentProduct, key) =>
+                <Fragment>
+                  {editProductId === currentProduct.id ? <EditableRow categories={categories} key={key} editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick} /> :
+                    <ReadOnlyRow product={currentProduct} key={key} deleteProduct={deleteProduct} handleEditClick={handleEditClick} />}
+                </Fragment>
+              )}
+            </tbody>
+          </table>
+          <div className="container">
+            <Pagination
+              setProductsPerPage={setProductsPerPage}
+              productsPerPage={productsPerPage}
+              totalProducts={products.length}
+              paginate={paginate}
+            />
+          </div>
+        </form>
       </div>
     </MainLayout>
   )
