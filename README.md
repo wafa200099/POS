@@ -57,8 +57,12 @@ With these operational improvements, customers will tend to get better service a
 
   <hr>
   
+  
   <h2>Page Shots</h2>
-
+  
+![image](https://user-images.githubusercontent.com/79041670/199681154-c91aa814-7996-4191-a2d8-e531b06ca720.png)
+  
+ 
 ![image](https://user-images.githubusercontent.com/79041670/199680771-bf4eef37-dc66-45bb-bd25-baf20cb2817f.png)
 
     
