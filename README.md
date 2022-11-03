@@ -60,6 +60,9 @@ With these operational improvements, customers will tend to get better service a
   
   <h2>Page Shots</h2>
   
+  ![image](https://user-images.githubusercontent.com/79041670/199681296-9db9c11b-2131-4200-a032-be4d20d7eda3.png)
+
+  
 ![image](https://user-images.githubusercontent.com/79041670/199681154-c91aa814-7996-4191-a2d8-e531b06ca720.png)
   
  
