@@ -58,11 +58,8 @@ With these operational improvements, customers will tend to get better service a
   <hr>
   
   <h2>Page Shots</h2>
-![image](https://user-images.githubusercontent.com/79041670/199678582-7a6ddad0-21f0-4e8b-b610-ea9cf3dffc38.png)
-![image](https://user-images.githubusercontent.com/79041670/199678764-9948d390-0a1d-4f31-8da7-aa98e43b048b.png)
-![image](https://user-images.githubusercontent.com/79041670/199678910-50589da9-582d-4ead-b0f8-88a198a0d8e9.png)
-![image](https://user-images.githubusercontent.com/79041670/199678966-19e5e96f-d632-4349-8483-320c9e1e8d69.png)
-![image](https://user-images.githubusercontent.com/79041670/199679090-f40739b4-80e3-42c1-a5ab-af0bd023e835.png)
+
+![image](https://user-images.githubusercontent.com/79041670/199680771-bf4eef37-dc66-45bb-bd25-baf20cb2817f.png)
 
     
     
