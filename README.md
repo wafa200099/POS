@@ -60,17 +60,18 @@ With these operational improvements, customers will tend to get better service a
   
   <h2>Page Shots</h2>
   
+  Home Page 
   ![image](https://user-images.githubusercontent.com/79041670/199681296-9db9c11b-2131-4200-a032-be4d20d7eda3.png)
 
-  
+  Pos Page
 ![image](https://user-images.githubusercontent.com/79041670/199681154-c91aa814-7996-4191-a2d8-e531b06ca720.png)
   
  
 ![image](https://user-images.githubusercontent.com/79041670/199680771-bf4eef37-dc66-45bb-bd25-baf20cb2817f.png)
-
+Product Page
     
  ![image](https://user-images.githubusercontent.com/79041670/199681449-17224f06-e8b4-4f40-983c-dd10fd43d193.png)
-   
+   Catagories Page 
    ![image](https://user-images.githubusercontent.com/79041670/199681550-6d62e0ee-d692-4ec7-9526-7d2d377694ac.png)
 
     
