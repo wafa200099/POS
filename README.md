@@ -34,7 +34,8 @@ With these operational improvements, customers will tend to get better service a
 <p><a href="https://reactrouter.com/en/main/routers/picking-a-router"> React router<a/></p> 
 <p><a href="https://reactjs.org/docs/hooks-intro.html"> React hooks <a/></p> 
 <p><a href="https://fkhadra.github.io/react-toastify/introduction/">React-toastify<a/></p> 
-<p><a href="https://www.npmjs.com/package/react-to-print"> React-to-print<a/></p> 
+<p><a href="https://www.npmjs.com/package/react-to-print"> React-to-print<a/></p>
+<p><a href="https://react-bootstrap.github.io/">React-bootstrap<a/></p> 
 <p><a href="https://formik.org/">Formik<a/></p> 
 
 
